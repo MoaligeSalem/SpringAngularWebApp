@@ -1,0 +1,5 @@
+Name, Design_Leakage_Power, Design_Internal_Power, Design_Switching_Power, Design_Total_Power, Combinational_Leakage_Power, Combinational_Internal_Power, Combinational_Switching_Power, Combinational_Total_Power, Register_Leakage_Power, Register_Internal_Power, Register_Switching_Power, Register_Total_Power, Memory_Leakage_Power, Memory_Internal_Power, Memory_Switching_Power, Memory_Total_Power, Clock_Network_Leakage_Power, Clock_Network_Internal_Power, Clock_Network_Switching_Power, Clock_Network_Total_Power
+__Top_Node__,8135.89,749.21,1284.5,10169.6,1974.11,147.113,440.851,2562.07,564.755,437.355,49.7016,1051.81,5548.66,0,30.5469,5579.21,48.3674,164.742,763.403,976.513
+u_cb_sys,51.1168,21.2241,34.9164,107.257,27.0346,4.03382,11.1792,42.2476,21.4988,13.227,0.816019,35.5418,0,0,0,0,2.58351,3.96326,22.9212,29.468
+
+

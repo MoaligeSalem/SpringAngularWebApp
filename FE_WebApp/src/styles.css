@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css"; 
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+.ag-full-width-container {
+    overflow: hidden;
+    position: fixed !important;
+    width: 100%;
+}
+.ag-center-cols-container {
+    width: auto !important;
+    height: 3080px;
+}
+.navbarIcon > mat-icon{
+    margin-left:20px;
+    font-size: 30px;
+    color: aliceblue;
+    margin-top: 7px;
+}
+.colDiv{
+    width: 35% ;
+}
+.navSearch{
+    margin-left:00px ;
+    width: 300px;
+    
+}

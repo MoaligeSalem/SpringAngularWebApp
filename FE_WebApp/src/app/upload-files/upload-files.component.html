@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport">
+    <title>File Upload Example</title>
+    <link rel="stylesheet" href="upload-files.component.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+</head>
+<body>
+
+<div class="col">
+    
+    <div class="row">
+        <header class="header">
+            
+            <div class="box" >
+                <img src="https://www.ville-rail-transports.com/wp-content/uploads/2018/10/siemens-logo.png" style="width: 200px;height: 100px;" >
+            </div>
+            <div class="box1" >
+            <h2> PowerPro offers the most comprehensive set of features to RTL designers to “Design-For-Low-Power”</h2>
+            </div>
+            <div class="box">
+            </div>
+            
+        </header>
+        
+    </div>
+
+    <div class="row">
+        <div class="wrapper" >
+    
+            <form class="form_path">
+                <div class="container" >
+                    <div class="row">
+                        <div class="form-group col">
+                            <label style="color: black;">CSV Ref Name</label>
+                            <input type="text" class="form-control" style="margin-left: 0px;" id="csvRefName" name="csvRefName" [(ngModel)]="csvRefName">
+                        </div>
+                        <div class="form-group col">
+                            <label style="color: black;margin-left: 0%;">CSV Ref Path</label>
+                            <input type="text" class="form-control" style="margin-left: 0px;" id="csvRef" name="csvRef" [(ngModel)]="csvRef">
+                        </div>
+                        <div class="form-group col"></div>
+                    </div>
+                    <div class="row" *ngFor="let obj of dataarray;let i=index">
+                        <div class="form-group col">
+                            <label style="color: black;">CSV Name</label>
+                            <input type="text" class="form-control" name="pathName{{i}}" [(ngModel)]="dataarray[i].pathName">
+                        </div>
+                        <div class="form-group col">
+                            <label style="color: black;">CSV Path</label>
+                            <input type="text" class="form-control" name="path{{i}}" [(ngModel)]="dataarray[i].path">
+                        </div>
+                        
+                        <div class="col">
+                            <div class="remove_fields" (click)="remove_fields(i) ">
+                                <label class="col" style="color: black;">Remove Row</label>
+                                <mat-icon >remove_circle_outline</mat-icon>
+                            </div >
+                        </div>
+                    </div>
+                    <div class="add_fields"  (click)="add_fields() ">
+                        <label class="col" style="color: black;">Add More Field</label>
+                        <mat-icon >add_circle_outline</mat-icon>
+                    </div >
+                </div>
+                
+            </form> 
+            <div class="compare-btn">            
+                    <input type="submit" (click)="uploadFiles('comparaison')" class="submit-btn" title="compare the files" value='Compare files' />
+                </div>
+             </div>
+    </div>
+    
+    <div class="row">
+        <div class="footer-dark">
+            <footer>
+                <div class="container1">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>Services</h3>
+                            <ul>
+                                <li><a href="#">Electronic design</a></li>
+                                <li><a href="#">PowerPro analysis</a></li>
+                                <li><a href="#">Web application</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>About</h3>
+                            <ul>
+                                <li><a href="#">Company</a></li>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Careers</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 item text">
+                            <h3>Siemens (Mentor Graphics)</h3>
+                            <p>Mentor is a Siemens multinational company and a technology leader in providing software and hardware solutions that enable companies 
+                                to develop better electronic products faster and at lower cost.  </p>
+                        </div>
+                        <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                    </div>
+                    <p class="copyright">Siemens © 2022</p>
+                </div>
+            </footer>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+        
+    
+    
+    
+    </div>
+
+</div>
+
+</body>
+    
+
+</html>

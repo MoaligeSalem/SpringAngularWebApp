@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <title>Document</title>
+</head>
+<body>
+  <router-outlet></router-outlet>
+
+  <header class="row bg-primary" style="padding:10px;width:98%;margin:1% ;height:80px;top: 10px;" >
+    <div class="colDiv ">
+      <nav  class="navbar " >
+        <mat-icon style="margin-right:20px;    margin-bottom: 7px;
+        font-size: 30px;color: aliceblue;">home</mat-icon>
+        <div class="col"><button class="btn btn-danger" style="border-radius:20px" (click)="onDeleteRow()" >
+          Delete rows
+        </button></div>
+  
+        <div class="col" ><button class="btn  btn-secondary" style="border-radius:20px" (click)="pinTopRow()">
+          Pin to the top
+        </button></div>
+  
+        <div class="col"><button class="btn btn-secondary" style="border-radius:20px" (click)="unpinTopRow()">
+          Unpin the top
+        </button></div>
+      </nav>
+    </div> 
+    <div class="col">
+      <nav class="navbarIcon" style="margin-top: 8px ;">
+        <mat-icon> comment</mat-icon>
+        <mat-icon>priority_high</mat-icon>
+        <mat-icon>sms_failed</mat-icon>
+        <mat-icon>done_outline</mat-icon>
+        <mat-icon>check_circle_outline</mat-icon>
+        <mat-icon>clear</mat-icon>
+        <mat-icon>grade</mat-icon>
+        <mat-icon>list</mat-icon>
+        <mat-icon>note_add</mat-icon>
+        <mat-icon>reorder</mat-icon>        
+
+
+      </nav>
+    </div>
+  
+    <div class="col my-width">
+
+      <div style="width:350px;margin-left: 120px;">
+        <nav class="navbar" style="margin-top: 7px; ">
+          <input class="bi bi-search "  style="width: 300px;text-align: center; border-radius: 20px;" 
+          type="text"  placeholder="Quick Search" 
+          (keyup)="quickSearch()" [(ngModel)]="searchValue"/>
+          <mat-icon style="font-size: 30px;color: aliceblue;margin-right: 10px;margin-bottom:7px ;">help_outline</mat-icon>
+  
+        </nav>
+      </div>
+      
+        <style>
+          .my-width{
+            width: 700px !important;
+          }
+        </style>
+    </div>
+  
+  </header>
+  
+  
+  
+  <ag-grid-angular
+    style=" height: 700px;width: 98%; margin: 1%;overflow: scroll;position: fixed;"
+    class="ag-theme-balham" 
+    (gridReady)="onGridReady($event)"
+    [autoGroupColumnDef]="autoGroupColumnDef"
+    [gridOptions]="gridOptions"
+    rowSelection="multiple"
+    [groupSelectsChildren]="true"
+  >
+  
+  </ag-grid-angular>
+  
+</body>
+</html>
