@@ -41,59 +41,99 @@ public class BookController {
 	}
 	@RequestMapping(value = "importCSV/path", params = {"pathh", "csvname"})
 	public String save(
-			/*@PathVariable(value="csvname") String csvname,
-			@RequestParam String csvName,
-	        @PathVariable(value="path") String path,
-	        @RequestParam String pathh){*/
 
-			@RequestParam(value = "pathh") List<String> pathh, @RequestParam(value = "csvname") List<String> csvname) {
+			@RequestParam(value = "pathh") String pathh, @RequestParam(value = "csvname") String csvname) {
 		//Book b=new Book();
 
-		for (int i =0; i< pathh.size(); i++) {
-			String p = pathh.get(i);
-			Book cs = new Book();
-			cs.setPath(p);
-			cs.setCsvname(csvname.get(i));
+		String p = pathh;
+
+		Book cs = new Book();
+		cs.setPath(p);
+		cs.setCsvname(csvname);
 
 
-			try {
-				BufferedReader reader = new BufferedReader(new FileReader(p));
-
-				String line = "";
-				while ((line = reader.readLine()) != null) {
-
-					String[] bk = line.split(",");
-					cs.setName(bk[0]);
-					cs.setDesign_Leakage_Power(bk[1]);
-					cs.setDesign_Internal_Power(bk[2]);
-					cs.setDesign_Switching_Power(bk[3]);
-					cs.setDesign_Total_Power(bk[4]);
-					cs.setCombinational_Leakage_Power(bk[5]);
-					cs.setCombinational_Internal_Power(bk[6]);
-					/*List<String[]> c = new ArrayList<>();
-					String[] cc = {
-
-							cs.getName(),
-							cs.getDesign_Leakage_Power(),
-							cs.getDesign_Internal_Power(),
-							cs.getDesign_Switching_Power(),
-							cs.getDesign_Total_Power(),
-							cs.getCombinational_Leakage_Power(),
-							cs.getCombinational_Internal_Power()
-					};
-					c.add(cc);*/
-					repository.save(cs);
-				}
-				System.out.println("import csv path it's okey");
+		ArrayList<Csv> f = new ArrayList<>();
 
 
-			} catch (Exception e) {
+
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(p));
+
+			String line;
+
+			while ((line = reader.readLine())  != null) {
+
+				String[] bk = line.split(",");
+				Csv csv = new Csv();
+				csv.setName(bk[0]);
+				csv.setDesign_Leakage_Power(bk[1]);
+				csv.setDesign_Internal_Power(bk[2]);
+				csv.setDesign_Switching_Power(bk[3]);
+				csv.setDesign_Total_Power(bk[4]);
+				csv.setCombinational_Leakage_Power(bk[5]);
+				csv.setCombinational_Internal_Power(bk[6]);
+				csv.setCombinational_Switching_Power(bk[7]);
+				csv.setCombinational_Total_Power(bk[8]);
+				csv.setRegister_Leakage_Power(bk[9]);
+				csv.setRegister_Internal_Power(bk[10]);
+				csv.setRegister_Switching_Power(bk[11]);
+				csv.setRegister_Total_Power(bk[12]);
+				csv.setMemory_Leakage_Power(bk[13]);
+				csv.setMemory_Internal_Power(bk[14]);
+				csv.setMemory_Switching_Power(bk[15]);
+				csv.setMemory_Total_Power(bk[16]);
+				csv.setClock_Network_Leakage_Power(bk[17]);
+				csv.setClock_Network_Internal_Power(bk[18]);
+				csv.setClock_Network_Switching_Power(bk[19]);
+				csv.setClock_Network_Total_Power(bk[20]);
+
+
+
+				Csv cc = new Csv(	csv.getName(),
+						csv.getDesign_Leakage_Power(),
+						csv.getDesign_Internal_Power(),
+						csv.getDesign_Switching_Power(),
+						csv.getDesign_Total_Power(),
+						csv.getCombinational_Leakage_Power(),
+						csv.getCombinational_Internal_Power(),
+						csv.getCombinational_Switching_Power(),
+						csv.getCombinational_Total_Power(),
+						csv.getRegister_Leakage_Power(),
+						csv.getRegister_Internal_Power(),
+						csv.getRegister_Switching_Power(),
+						csv.getRegister_Total_Power(),
+						csv.getMemory_Leakage_Power(),
+						csv.getMemory_Internal_Power(),
+						csv.getMemory_Switching_Power() ,
+						csv.getMemory_Total_Power(),
+						csv.getClock_Network_Leakage_Power(),
+						csv.getClock_Network_Internal_Power(),
+						csv.getClock_Network_Switching_Power(),
+						csv.getClock_Network_Total_Power()
+				);
+				f.add(cc);
+
+
+
 
 			}
+			System.out.println("import csv path it's okey");
+			cs.setFields(f);
+
+		} catch (Exception e) {
+// TODO: handle exception
+//throw new RuntimeException("fail to import the CSV file");
+
+			//return "Exception";
 
 
 		}
-		return "book saved with path : " + pathh.get(0) + " and name :" + csvname.get(0);
+		repository.save(cs);
+
+
+
+		return "book saved with path : " + pathh + " and name :" + csvname;
+
 
 	}
 
