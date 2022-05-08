@@ -30,6 +30,7 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { ComparaisonComponent } from './comparaison/comparaison.component';
+import { CompaComponent } from './compa/compa.component';
 
 
 
@@ -40,6 +41,7 @@ import { ComparaisonComponent } from './comparaison/comparaison.component';
     routingComponents,
     AuthenticationComponent,
     ComparaisonComponent,
+    CompaComponent,
   ],
   imports: [
     BrowserModule,

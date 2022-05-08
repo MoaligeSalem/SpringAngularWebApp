@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColumnApi, GridApi } from 'ag-grid';
@@ -12,30 +12,114 @@ export class ComparaisonComponent implements OnInit {
 
   title = 'pro';
   gridApi:GridApi;
+  gridApi1:GridApi;
+
   gridColumnApi:ColumnApi;
+  gridColumnApi1:ColumnApi;
+
   topRow=[];
+
   searchValue;
-  columnDefs=[
+  colu=[
     {
-      headerName:"csvname",
-      field:"csvname",
-      width:190,
-      rowGroupIndex:1,      
-      filter:'agTextColumnFilter',
+      headerName:"INSTANCES",
+      
+     field:'instances',
+     //valueGetter: 'data.fields[1].name',
+
+     
+      width:105,
+      filter:'agNumberColumnFilter',
+    },
+
+    {
+      headerName:"INSTANCES",
+      
+     //field:'rtl_OLD_PA_DESIGN1',
+     //valueGetter: 'data.fields[1].name',
+
+     
+      width:105,
+      filter:'agNumberColumnFilter',
+      aggFucn:"sum",
+      valueParser: "Number(newValue)",
 
       
-    },{
-      headerName:"path",
-      field:"path",
-      width:90,
+    },
+    
+
+  ]
+  
+  
+  columnDefs=[
+    // {
+    //   headerName:"csvname",
+    //   field:"csvname",
+    //   width:90,
+    //   rowGroupIndex:1,      
+    //   filter:'agTextColumnFilter',
+
+      
+    // },{
+    //   headerName:"path",
+    //   field:"path",
+    //   width:90,
+    //   filter:'agNumberColumnFilter',
+    // },
+    {
+      headerName:"INSTANCES",
+      
+     field:'instances',
+     //valueGetter: 'data.fields[1].name',
+
+     
+      width:105,
       filter:'agNumberColumnFilter',
-    },{
-      headerName:"name",
-      field:"name",
-      width:90,
+    },
+    {
+      headerName:"Leakage Power",
+      //field:'fields',
       filter:'agNumberColumnFilter',
+      children:[
+        {headerName:"RTL_OLD_PA_DES",field:'rtl_OLD_PA_DESIGN1', width:136,},
+        {headerName:"RTL_NEW_PA_DES",field:'rtl_NEW_PA_DESIGN1', width:138,},
+        {headerName:"Diff%",field:'diff1', width:72,}
+
+            ]
+    },
+    {
+      headerName:"Internal Power",
+      //field:"fields",
+      filter:'agNumberColumnFilter',
+      children:[
+        {headerName:"RTL_OLD_PA_DES",field:'rtl_OLD_PA_DESIGN2', width:136,},
+        {headerName:"RTL_NEW_PA_DES",field:'rtl_NEW_PA_DESIGN2', width:137,},
+        {headerName:"Diff%",field:'diff2', width:72,}
+
+      ]
+    },
+    {
+      headerName:"Switching Power",
+      //field:"fields",
+      filter:'agNumberColumnFilter',
+      children:[
+        {headerName:"RTL_OLD_PA_DES",field:'rtl_OLD_PA_DESIGN3', width:136,},
+        {headerName:"RTL_NEW_PA_DES",field:'rtl_NEW_PA_DESIGN3', width:138,},
+        {headerName:"Diff%",field:'diff3', width:72,}
+
+      ]
+    },
+    {
+      headerName:"Total Power",
+      //field:"fields",
+      filter:'agNumberColumnFilter',
+      children:[
+        {headerName:"RTL_OLD_PA_DES",field:'rtl_OLD_PA_DESIGN4', width:138,},
+        {headerName:"RTL_NEW_PA_DES",field:'rtl_NEW_PA_DESIGN4', width:138,},
+        {headerName:"Diff%",field:'diff4', width:72,}
+      ]
     }
-  ];
+   ];
   autoGroupColumnDef={
     headerName:'runs',
     field:'book',
@@ -48,17 +132,51 @@ export class ComparaisonComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router){}
   ngOnInit(){}
 ;
+
+onSelectionChanged() {
+  var selectedRows = this.gridApi.getSelectedRows();
+  var selectedRows1 = this.gridApi1.getSelectedRows();
+  console.log(selectedRows);
+  console.log(selectedRows1);
+}
   onGridReady(params){
-    //let dataValue=[{"firstName":"Moalige","age":23}]
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.http
-    .get("http://localhost:8080/findAllBooks")
+    .get("http://localhost:8080/findAllBookss")
     .subscribe(data=>{
       params.api.setRowData(data);
     })
 
   }
+
+  onGridReady1(params){
+    this.gridApi1 = params.api;
+    this.gridColumnApi1 = params.columnApi;
+    this.http
+    .get("http://localhost:8080/findAllBookss")
+    .subscribe(data=>{
+      params.api.setRowData(data);
+    })
+
+  }
+
+  //  onGridReady=(params)=>{
+  //   console.log("grid is ready")
+  //   fetch("http://localhost:8080/findAllBookss").then(resp=>resp.json())
+  //   .then(resp=>{console.log(resp)
+  //     params.api.applyTransaction({add:resp})})
+  // }
+
+  // onGridReady1=(params)=>{
+  //   console.log("grid is ready")
+  //   fetch("http://localhost:8080/findAllBookss").then(resp=>resp.json())
+  //   .then(resp=>{console.log(resp)
+  //     params.api.applyTransaction({add:resp})})
+  // }
+
+
+  
   gridOptions = {
     colmunsTypes:{
       editable:true,
@@ -86,7 +204,12 @@ export class ComparaisonComponent implements OnInit {
     animateRows:true,
     columnDefs:this.columnDefs,
     groupHidenOpenParents:true,
+
+
+    
   }
+
+  
   onDeleteRow(){
     if (confirm('Are you sure you want to delete the selected rows?')) {
       const selectedData=this.gridApi.getSelectedRows();
@@ -106,4 +229,7 @@ export class ComparaisonComponent implements OnInit {
   quickSearch(){
     this.gridApi.setQuickFilter(this.searchValue)
   } 
+
+  
 }
+

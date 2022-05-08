@@ -12,13 +12,17 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import com.javatechie.spring.mongo.api.model.Compar;
 import com.javatechie.spring.mongo.api.model.Csv;
+import com.javatechie.spring.mongo.api.repository.ComparRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.javatechie.spring.mongo.api.model.Book;
+import com.javatechie.spring.mongo.api.model.Compar;
+
 import com.javatechie.spring.mongo.api.repository.BookRepository;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -32,6 +36,10 @@ import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 public class BookController {
 	@Autowired
 	private BookRepository repository;
+	@Autowired
+	private ComparRepository repo;
+	@Autowired
+	private SequenceGeneratorService seqGener;
 
 	@PostMapping("addBook")
 	public String saveBook(@RequestBody Book book) {
@@ -39,6 +47,15 @@ public class BookController {
 
 		return "added book with path:"+ book.getPath() ;
 	}
+
+	@PostMapping("addBookk")
+	public String saveeBook(@RequestBody Compar compar) {
+		repo.save(compar);
+
+		return "Comparaison file added" ;
+	}
+
+
 	@RequestMapping(value = "importCSV/path", params = {"pathh", "csvname"})
 	public String save(
 
@@ -48,6 +65,10 @@ public class BookController {
 		String p = pathh;
 
 		Book cs = new Book();
+
+		cs.setId(seqGener.generateSequence(Book.SEQUENCE_NAME));
+
+
 		cs.setPath(p);
 		cs.setCsvname(csvname);
 
@@ -89,7 +110,7 @@ public class BookController {
 
 
 
-				Csv cc = new Csv(	csv.getName(),
+				/*Csv cc = new Csv(	csv.getName(),
 						csv.getDesign_Leakage_Power(),
 						csv.getDesign_Internal_Power(),
 						csv.getDesign_Switching_Power(),
@@ -110,8 +131,8 @@ public class BookController {
 						csv.getClock_Network_Internal_Power(),
 						csv.getClock_Network_Switching_Power(),
 						csv.getClock_Network_Total_Power()
-				);
-				f.add(cc);
+				);*/
+				f.add(csv);
 
 
 
@@ -136,6 +157,107 @@ public class BookController {
 
 
 	}
+
+
+	@RequestMapping(value = "importCSV/pathh", params = {"pathh", "csvname"})
+	public String savee(
+
+			@RequestParam(value = "pathh") String pathh, @RequestParam(value = "csvname") String csvname) {
+		//Book b=new Book();
+
+		String p = pathh;
+
+		//Compar csvv = new Compar();
+
+		//css.setId(seqGener.generateSequence(Book.SEQUENCE_NAME));
+
+
+		//css.setPath(p);
+		//css.setCsvname(csvname);
+
+
+		//ArrayList<Compar> f = new ArrayList<>();
+
+
+
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(p));
+			reader.readLine();
+
+			String line=null;
+
+			while ((line = reader.readLine())  != null) {
+
+				String[] bk = line.split(",");
+				//Compar csvv = new Compar();
+				Compar csvv = new Compar();
+
+				csvv.setINSTANCES(bk[0]);
+				csvv.setRTL_OLD_PA_DESIGN1(Double.parseDouble(bk[1]));
+				csvv.setRTL_NEW_PA_DESIGN1(bk[2]);
+				csvv.setDiff1(bk[3]);
+				csvv.setRTL_OLD_PA_DESIGN2(bk[4]);
+				csvv.setRTL_NEW_PA_DESIGN2(bk[5]);
+				csvv.setDiff2(bk[6]);
+				csvv.setRTL_OLD_PA_DESIGN3(bk[7]);
+				csvv.setRTL_NEW_PA_DESIGN3(bk[8]);
+				csvv.setDiff3(bk[9]);
+				csvv.setRTL_OLD_PA_DESIGN4(bk[10]);
+				csvv.setRTL_NEW_PA_DESIGN4(bk[11]);
+				csvv.setDiff4(bk[12]);
+
+				repo.save(csvv);
+
+
+				/*Csv cc = new Csv(	csv.getName(),
+						csv.getDesign_Leakage_Power(),
+						csv.getDesign_Internal_Power(),
+						csv.getDesign_Switching_Power(),
+						csv.getDesign_Total_Power(),
+						csv.getCombinational_Leakage_Power(),
+						csv.getCombinational_Internal_Power(),
+						csv.getCombinational_Switching_Power(),
+						csv.getCombinational_Total_Power(),
+						csv.getRegister_Leakage_Power(),
+						csv.getRegister_Internal_Power(),
+						csv.getRegister_Switching_Power(),
+						csv.getRegister_Total_Power(),
+						csv.getMemory_Leakage_Power(),
+						csv.getMemory_Internal_Power(),
+						csv.getMemory_Switching_Power() ,
+						csv.getMemory_Total_Power(),
+						csv.getClock_Network_Leakage_Power(),
+						csv.getClock_Network_Internal_Power(),
+						csv.getClock_Network_Switching_Power(),
+						csv.getClock_Network_Total_Power()
+				);*/
+				//f.add(csvv);
+
+
+
+
+			}
+			System.out.println("import csv path it's okey");
+			//css.setField(f);
+
+		} catch (Exception e) {
+// TODO: handle exception
+//throw new RuntimeException("fail to import the CSV file");
+
+			//return "Exception";
+
+
+		}
+		//repo.save(csvv);
+
+
+
+		return "book saved with path : " + pathh + " and name :" + csvname;
+
+
+	}
+
+
 
 			@GetMapping("/path")
 	public String saveCu(@RequestParam String path) {
@@ -171,10 +293,15 @@ public class BookController {
 	public List<Book> getBooks(){
 		return repository.findAll();
 	}
+
+	@GetMapping("findAllBookss")
+	public List<Compar> getBookss(){
+		return repo.findAll();
+	}
+
 	@GetMapping("findAllBooks/{id}")
 	public Optional<Book> getBook(@PathVariable int id){
-		return repository.findById(id);
-	}
+		return repository.findById(id);}
 	@DeleteMapping("delete/{id}")
 	public String deleteBook(@PathVariable int id) {
 		repository.deleteById(id);

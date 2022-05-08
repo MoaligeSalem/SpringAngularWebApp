@@ -69,19 +69,83 @@
   
   </header>
   
-  
+  <h5>Design Power Summary per instance :
+  </h5>
   
   <ag-grid-angular
-    style=" height: 700px;width: 98%; margin: 1%;overflow: scroll;position: fixed;"
+    style="width: 1500px; height: 500px;"
     class="ag-theme-balham" 
     (gridReady)="onGridReady($event)"
+    (selectionChanged)="onSelectionChanged()"
     [autoGroupColumnDef]="autoGroupColumnDef"
     [gridOptions]="gridOptions"
-    rowSelection="multiple"
+    rowSelection="single"
     [groupSelectsChildren]="true"
+    [columnDefs]="columnDefs"
+    
   >
   
   </ag-grid-angular>
+
+  <h5>Combinational Power Summary per instance :
+  </h5>
+
+
+  <ag-grid-angular
+  style="width: 1500px; height: 500px;"
+  class="ag-theme-balham" 
+  (gridReady)="onGridReady1($event)"
+  (selectionChanged)="onSelectionChanged()"
+  [autoGroupColumnDef]="autoGroupColumnDef"
+  [gridOptions]="gridOptions"
+  rowSelection="single"
+  [groupSelectsChildren]="true"
+  [columnDefs]="colu"
+  [groupIncludeTotalFooter]="true"
+
+>
+
+</ag-grid-angular>
+
+<h5>Register Power Summary per instance :
+</h5>
+
+
+<ag-grid-angular
+style="width: 1500px; height: 500px;"
+class="ag-theme-balham" 
+(gridReady)="onGridReady1($event)"
+(selectionChanged)="onSelectionChanged()"
+[autoGroupColumnDef]="autoGroupColumnDef"
+[gridOptions]="gridOptions"
+rowSelection="single"
+[groupSelectsChildren]="true"
+[columnDefs]="columnDefs"
+
+>
+
+</ag-grid-angular>
+
+<h5>Memory Power Summary per instance :
+</h5>
+
+
+<ag-grid-angular
+style="width: 1500px; height: 500px;"
+class="ag-theme-balham" 
+(gridReady)="onGridReady1($event)"
+(selectionChanged)="onSelectionChanged()"
+[autoGroupColumnDef]="autoGroupColumnDef"
+[gridOptions]="gridOptions"
+rowSelection="single"
+[groupSelectsChildren]="true"
+[columnDefs]="columnDefs"
+
+>
+
+</ag-grid-angular>
   
 </body>
+
+
 </html>
