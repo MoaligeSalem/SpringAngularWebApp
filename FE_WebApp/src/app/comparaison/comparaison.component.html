@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="comparaison.component.css"/>
+
 
 
   <title>Document</title>
@@ -64,6 +66,30 @@
           .my-width{
             width: 700px !important;
           }
+          .ag-pivot-off .ag-header-group-cell {
+            font-size: 50px;
+            color: red;
+        }
+        
+        .ag-pivot-on .ag-header-group-cell {
+            font-size: 25px;
+            color: green;
+        }
+        .ag-cell-label-container {
+            /* Necessary to allow for text to grow vertically */
+            height: 100%;
+        }
+        
+        .ag-header-cell-label {
+            /* Necessary to allow for text to grow vertically */
+            height: 100%;
+            padding: 0 !important;
+        }
+        h5 { 
+    font-style: italic;
+    color: rgb(10, 91, 184);
+    font-size: 1em;
+}
         </style>
     </div>
   
@@ -73,17 +99,16 @@
   </h5>
   
   <ag-grid-angular
-    style="width: 1500px; height: 500px;"
+  style="width: 9000px; height: 500px;"
     class="ag-theme-balham" 
-    (gridReady)="onGridReady1($event)"
     (selectionChanged)="onSelectionChanged()"
     [autoGroupColumnDef]="autoGroupColumnDef"
     [gridOptions]="gridOptions"
     rowSelection="single"
     [groupSelectsChildren]="true"
-    [columnDefs]="columnDefs"
     [aggFuncs]="aggFuncs"
-
+    [columnDefs]="columnDefs"
+    (gridReady)="onGridReady1($event)"
     
   >
   
@@ -94,18 +119,17 @@
 
 
   <ag-grid-angular
-  style="width: 1500px; height: 500px;"
+  style="width: 9000px; height: 500px;"
   class="ag-theme-balham" 
-  (gridReady)="onGridReady1($event)"
   (selectionChanged)="onSelectionChanged()"
   [autoGroupColumnDef]="autoGroupColumnDef"
   [gridOptions]="gridOptions"
   rowSelection="single"
   [groupSelectsChildren]="true"
-  [columnDefs]="columnDefs"
   [groupIncludeTotalFooter]="true"
-
->
+  [columnDefs]="columnDefs1"
+  (gridReady)="onGridReady1($event)"
+  >
 
 </ag-grid-angular>
 
@@ -114,16 +138,15 @@
 
 
 <ag-grid-angular
-style="width: 1500px; height: 500px;"
+style="width: 9000px; height: 500px;"
 class="ag-theme-balham" 
-(gridReady)="onGridReady1($event)"
 (selectionChanged)="onSelectionChanged()"
 [autoGroupColumnDef]="autoGroupColumnDef"
 [gridOptions]="gridOptions"
-rowSelection="single"
+rowSelection="multiple"
 [groupSelectsChildren]="true"
-[columnDefs]="columnDefs"
-
+[columnDefs]="columnDefs2"
+(gridReady)="onGridReady1($event)"
 >
 
 </ag-grid-angular>
@@ -133,31 +156,48 @@ rowSelection="single"
 
 
 <ag-grid-angular
-style="width: 1500px; height: 500px;"
+style="width: 9000px; height: 500px;"
 class="ag-theme-balham" 
-(gridReady)="onGridReady1($event)"
 (selectionChanged)="onSelectionChanged()"
 [autoGroupColumnDef]="autoGroupColumnDef"
 [gridOptions]="gridOptions"
-rowSelection="single"
+rowSelection="multiple"
 [groupSelectsChildren]="true"
-[columnDefs]="columnDefs"
-
+[columnDefs]="columnDefs3"
+(gridReady)="onGridReady1($event)"
 >
 
 </ag-grid-angular>
+
+<h5>Clock Network Power Summary per instance :
+</h5>
+
+
+<ag-grid-angular
+style="width: 9000px; height: 500px;"
+class="ag-theme-balham" 
+(selectionChanged)="onSelectionChanged()"
+[autoGroupColumnDef]="autoGroupColumnDef"
+[gridOptions]="gridOptions"
+rowSelection="multiple"
+[groupSelectsChildren]="true"
+[columnDefs]="columnDefs4"
+(gridReady)="onGridReady1($event)"
+>
+
+</ag-grid-angular>
+
 
 <h5>Summary
 </h5>
 <div>
 <ag-grid-angular
-  style="width: 1000px; height: 500px;"
+  style="width: 9000px; height: 500px;"
   class="ag-theme-balham" 
-  (gridReady)="onGridReady1($event)"
   (selectionChanged)="onSelectionChanged()"
   [autoGroupColumnDef]="autoGroupColumnDef"
   [gridOptions]="gridOptions"
-  rowSelection="single"
+  rowSelection="multiple"
   [groupSelectsChildren]="true"
   [columnDefs]="colu"
   [aggFuncs]="aggFuncs"

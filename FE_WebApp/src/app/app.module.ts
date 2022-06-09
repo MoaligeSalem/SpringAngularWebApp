@@ -31,6 +31,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { ComparaisonComponent } from './comparaison/comparaison.component';
 import { CompaComponent } from './compa/compa.component';
+import { DataService } from './data.service';
 
 
 
@@ -69,7 +70,8 @@ import { CompaComponent } from './compa/compa.component';
     MdbValidationModule,
     AppRoutingModule
   ],
-  providers: [routingComponents],
+  providers: [routingComponents,DataService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

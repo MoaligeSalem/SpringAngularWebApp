@@ -43,3 +43,23 @@ table {
         border-collapse: collapse;
         padding: 5px;
         }
+
+        .ag-pivot-off .ag-header-group-cell {
+            font-size: 50px;
+            color: red;
+        }
+        
+        .ag-pivot-on .ag-header-group-cell {
+            font-size: 25px;
+            color: green;
+        }
+        .ag-cell-label-container {
+            /* Necessary to allow for text to grow vertically */
+            height: 100%;
+        }
+        
+        .ag-header-cell-label {
+            /* Necessary to allow for text to grow vertically */
+            height: 100%;
+            padding: 0 !important;
+        }
