@@ -30,7 +30,7 @@ export class ComparaisonComponent implements OnInit {
         this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
         const a = JSON.parse(this.object2)
         console.log(a)
-   
+
      }
 
   title = 'pro';
@@ -46,36 +46,206 @@ export class ComparaisonComponent implements OnInit {
 //      fontWeight: '' 
 //  }
 }];
-  table2= [{field : 'Diff%',headerName:'',width:0}];
+  table2= [{field : '',headerName:'',width:0}];
   //table2= [{ field:'Diff%', valueGetter:this.calculDiff}];
-  table3= [{ field:'Diff%',headerName:'',width:0}];
-  table4= [{ field:'Diff%',headerName:'',width:0}];
-  table5= [{ field:'Diff%',headerName:'',width:0}];
-  table6= [{ field:'Diff%',headerName:'',width:0}];
-  table7= [{ field:'Diff%',headerName:'',width:0}];
-  table8= [{ field:'Diff%',headerName:'',width:0}];
-  table9= [{ field:'Diff%',headerName:'',width:0}];
-  table10= [{ field:'Diff%',headerName:'',width:0}];
-  table11= [{ field:'Diff%',headerName:'',width:0}];
-  table12= [{ field:'Diff%',headerName:'',width:0}];
-  table13= [{ field:'Diff%',headerName:'',width:0}];
-  table14= [{ field:'Diff%',headerName:'',width:0}];
-  table15= [{ field:'Diff%',headerName:'',width:0}];
-  table16= [{ field:'Diff%',headerName:'',width:0}];
-  table17= [{ field:'Diff%',headerName:'',width:0}];
-  table18= [{ field:'Diff%',headerName:'',width:0}];
-  table19= [{ field:'Diff%',headerName:'',width:0}];
-  table20= [{ field:'Diff%',headerName:'',width:0}];
-  topRow=[];
+  table3= [{ field:'',headerName:'',width:0}];
+  table4= [{ field:'',headerName:'',width:0}];
+  table5= [{ field:'',headerName:'',width:0}];
+  table6= [{ field:'',headerName:'',width:0}];
+  table7= [{ field:'',headerName:'',width:0}];
+  table8= [{ field:'',headerName:'',width:0}];
+  table9= [{ field:'',headerName:'',width:0}];
+  table10= [{ field:'',headerName:'',width:0}];
+  table11= [{ field:'',headerName:'',width:0}];
+  table12= [{ field:'',headerName:'',width:0}];
+  table13= [{ field:'',headerName:'',width:0}];
+  table14= [{ field:'',headerName:'',width:0}];
+  table15= [{ field:'',headerName:'',width:0}];
+  table16= [{ field:'',headerName:'',width:0}];
+  table17= [{ field:'',headerName:'',width:0}];
+  table18= [{ field:'',headerName:'',width:0}];
+  table19= [{ field:'',headerName:'',width:0}];
+  table20= [{ field:'',headerName:'',width:0}];
+  topRow=[]
+   aa = this.userObject.slice(1,2);
 
   searchValue;
+
+  sum=[{field:'',headerName:'',width:0}]
+
+  onGridReady2(params){
+    this.gridApi1 = params.api;
+      this.gridColumnApi1 = params.columnApi;
+      this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
+     const userObject = JSON.parse(this.object)
+     const aa = userObject.slice(1,2)
+      params.api.setRowData(this.colu)
+     // params.api.setRowData(aa);
+      params.api.setRowData(this.rowData);
+
+
+  }
+  onGridReady1(params){
+    this.gridApi1 = params.api;
+      this.gridColumnApi1 = params.columnApi;
+      this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
+     const userObject = JSON.parse(this.object)
+     const userObject1 = userObject.slice(1,)
+       params.api.setRowData(userObject1);
+
+      // const colDefs = params.api.getColumnDefs();
+      //   colDefs.length=0;
+      //   for(let i=0;i<userObject[0].length;i++){
+      //   const keys = Object.values(userObject[0][i])
+      //   //console.log(this.object[0])
+      //   keys.forEach(key => colDefs.push({field : key}));
+      //   params.api.setColumnDefs(colDefs);
+      //   }
+        
+  //      // params.api.setRowData(this.object);
+    
+    
+  }
+
+  // { a:'Design leakage' },
+
+  //    { a:'Design intenal '},
+  //    { a:'Design total' },
+  //    { a:'Design switching'},
+  //    { a: 'Combinational leakage ' },
+  //    { a:'Combinational intenal ' },
+  //    {a: 'Combinational switching'} ,
+  //    { a: 'Combinational total ' },
+  //    { a:  'Register leakage ' },
+  //    { a: 'Register intenal '} ,
+  //    {  a:'Register switching'} ,
+  //    { a:'Register total' },
+  //    { a: 'Memory leakage ' },
+  //    { a: 'Memory intenal '},
+  //    { a:'Memory switching' },
+  //    { a: 'Memory total' },
+  //    { a: 'Clock leakage' },
+  //    { a: 'Clock intenal ' },
+  //    { a: 'Clock switching ' },
+  //   {  a:'Clock total' },
+
+ rowData1=[
+
+  'Design leakage' ,
+
+    'Design intenal ',
+     'Design total' ,
+    'Design switching',
+      'Combinational leakage ' ,
+    'Combinational intenal ' ,
+      'Combinational switching' ,
+     'Combinational total ' ,
+      'Register leakage ' ,
+     'Register intenal ' ,
+     'Register switching' ,
+    'Register total' ,
+    'Memory leakage ' ,
+      'Memory intenal ',
+    'Memory switching' ,
+     'Memory total', 
+     'Clock leakage' ,
+    'Clock intenal ' ,
+     'Clock switching ',
+    'Clock total'
+  ]
+  ;
+
+
+
+  // rowData=[
   
+  //   { a:'Design leakage' },
+
+  //   { a:'Design intenal '},
+  //   { a:'Design total',s:'' },
+  //   { a:'Design switching',s:''},
+  //   { a: 'Combinational leakage ',s:'' },
+  //   { a:'Combinational intenal ' ,s:''},
+  //   {a: 'Combinational switching',s:''} ,
+  //   { a: 'Combinational total ' ,s:''},
+  //   { a:  'Register leakage ' ,s:''},
+  //   { a: 'Register intenal ',s:''} ,
+  //   {  a:'Register switching',s:''} ,
+  //   { a:'Register total' ,s:''},
+  //   { a: 'Memory leakage ',s:'' },
+  //   { a: 'Memory intenal ',s:''},
+  //   { a:'Memory switching' ,s:''},
+  //   { a: 'Memory total' ,s:''},
+  //   { a: 'Clock leakage' ,s:''},
+  //   { a: 'Clock intenal ',s:'' },
+  //   { a: 'Clock switching ',s:'' },
+  //  {  a:'Clock total',s:'' },
+
+  //  // {s:this.aa[5]}
+  // ]
+  // ;
+
+rowData=[
+  {s:''}
+]
+
+//   getSum(){   
+//     this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
+//    const userObject = JSON.parse(this.object)
+//   // const userObject1 = userObject.slice(1,)
+
+//    console.log(userObject[0].length)
+//     this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
+//     const a = JSON.parse(this.object2)
+
+//     //this.dataS2=[]   
+//     console.log(a)
+//     for (let index = 1; index <= a; index++) { 
+//       //for(let i=1;i<userObject[0].length;i++){
+   
+//       //console.log(userObject[index])  
+//     this.rowData.unshift(              
+//   {
+//    a:'kjh'
+// //    cellStyle: {
+// //     backgroundColor: '', 
+// //      fontWeight: '' 
+// //  }
+// }  ,)}     
+//      return this.rowData }
+  getCo(){
+    this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
+    const userObject = JSON.parse(this.object)
+    const userObject12 = userObject.slice(1,2)
+   // console.log(userObject12[0][4])
+    //console.log(userObject.slice(1,2)) 
+    
+     this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
+     const a = JSON.parse(this.object2)
+     //for (let i = 0; i <this.rowData1.length; i++) { 
+
+     for (let index = 1; index <userObject[0].length; index+=a+(a-1)) { 
+       
+
+
+       this.rowData.push(              
+ // { s:userObject12[index]})
+  {s:userObject12[0][index]})
+
+  //{ field:index.toString()})
+
+
+}  
+//for(let i=1;i<=a;i++){
+     return {field:'s'}
+   //  return
+  }
   colu=[
     {
       headerName:"COMPONENTS",
-      minWidth:180,
+      //minWidth:180,
       
-     field:'undefined_ Clock_Network_Internal_Power',
+     field:'a',
      //valueGetter: 'data.fields[1].name',
      cellStyle: {
       backgroundColor: 'AliceBlue', 
@@ -83,51 +253,13 @@ export class ComparaisonComponent implements OnInit {
   },
   sortable: false,
   editable: true,
-
-      width:105,
-      filter:'agNumberColumnFilter',
     },
     {
       headerName:"POWER NUMBERS",
-      filter:'agNumberColumnFilter',
-      children:[
-        {
-        field:'undefined_ Register_Total_Power',
-        //valueGetter: 'data.rtl_OLD_PA_DESIGN1[1]',
-
-         width:136,},
-        {headerName:"RTL_NEW_PA",field:'undefined Clock_Network_Internal_Power', width:138,},
-        {     field:'undefined Clock_Network_Internal_Power', hide:'true',
-         minwidth:100,}
-
-            ]
+      children:[this.getCo()],
     },
-
-
        
 ];
-
-
-// rowData = [
-//   { make: 'Design total' },
-//   { make: 'Design switching' },
-//   { make: 'Design leakage' },
-//   { make: 'Design intenal' },
-//   { make: 'Combinational total' },
-//   { make: 'Combinational switching' },
-//   { make: 'Combinational leakage' },
-//   { make: 'Combinational intenal' },
-//   { make: 'Register total' },
-//   { make: 'Register switching' },
-//   { make: 'Register leakage' },
-//   { make: 'Register intenal' },
-//   { make: 'Memory total' },
-//   { make: 'Memory switching' },
-//   { make: 'Memory leakage' },
-//   { make: 'Memory intenal' }
-// ];
-
-
 
     // {
     //   headerName:"Internal Power",
@@ -205,27 +337,7 @@ onSelectionChanged() {
 
   // }
 
-   onGridReady1(params){
-    this.gridApi1 = params.api;
-      this.gridColumnApi1 = params.columnApi;
-      this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
-     const userObject = JSON.parse(this.object)
-     const userObject1 = userObject.slice(1,)
-       params.api.setRowData(userObject1);
-
-      // const colDefs = params.api.getColumnDefs();
-      //   colDefs.length=0;
-      //   for(let i=0;i<userObject[0].length;i++){
-      //   const keys = Object.values(userObject[0][i])
-      //   //console.log(this.object[0])
-      //   keys.forEach(key => colDefs.push({field : key}));
-      //   params.api.setColumnDefs(colDefs);
-      //   }
-        
-  //      // params.api.setRowData(this.object);
-    
-    
-  }
+   
 
  // rowData=[{Name: this.userObject[0]}];
   // Index(index){
@@ -264,6 +376,8 @@ onSelectionChanged() {
   getData1(){   
     this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
    const userObject = JSON.parse(this.object)
+   const aaa = userObject.slice(1,2)
+   console.log(aaa[0][5])
    console.log(userObject.slice(1,))
    console.log(userObject[0].length)
     this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
@@ -275,7 +389,7 @@ onSelectionChanged() {
       //for(let i=1;i<userObject[0].length;i++){
    
       //console.log(userObject[index])  
-    this.table.unshift(              
+    this.table.push(              
       //headerName:"Leakage power",
    // field: this.userObject[index] 
   {
@@ -308,7 +422,7 @@ onSelectionChanged() {
       console.log(a)
       for (let index = 2*a; index < 3*a; index++) {   
         //console.log(userObject[index])  
-      this.table2.unshift(              
+      this.table2.push(              
       
      // headerName:(index+1)*10,       
     //headerName:"Leakage power",
@@ -337,7 +451,7 @@ onSelectionChanged() {
         console.log(a)
         for (let index = 4*a-1; index < 5*a-1; index++) {   
           //console.log(userObject[index])  
-        this.table3.unshift(              
+        this.table3.push(              
         
       //headerName:"Leakage power",
        // field: this.userObject[index] 
@@ -363,7 +477,7 @@ onSelectionChanged() {
           console.log(a)
           for (let index = 6*a-2; index < 7*a-2; index++) {   
             //console.log(userObject[index])  
-          this.table4.unshift(              
+          this.table4.push(              
           
         //headerName:"Leakage power",
          // field: this.userObject[index] 
@@ -482,7 +596,7 @@ onSelectionChanged() {
     console.log(a)
     for (let index = 8*a-3; index < 9*a-3; index++) {    
       //console.log(userObject[index])  
-    this.table5.unshift(              
+    this.table5.push(              
       //headerName:"Leakage power",
    // field: this.userObject[index] 
   {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}    
@@ -506,7 +620,7 @@ onSelectionChanged() {
       console.log(a)
       for (let index = 10*a-4; index < 11*a-4; index++) {   
         //console.log(userObject[index])  
-      this.table6.unshift(              
+      this.table6.push(              
       
     //headerName:"Leakage power",
      // field: this.userObject[index] 
@@ -532,7 +646,7 @@ onSelectionChanged() {
         console.log(a)
         for (let index = 12*a-5; index < 13*a-5; index++) {   
           //console.log(userObject[index])  
-        this.table7.unshift(              
+        this.table7.push(              
         
       //headerName:"Leakage power",
        // field: this.userObject[index] 
@@ -557,7 +671,7 @@ onSelectionChanged() {
           console.log(a)
           for (let index = 14*a-6; index < 15*a-6; index++) {   
             //console.log(userObject[index])  
-          this.table8.unshift(              
+          this.table8.push(              
           
         //headerName:"Leakage power",
          // field: this.userObject[index] 
@@ -599,7 +713,7 @@ onSelectionChanged() {
     console.log(a)
     for (let index = 16*a-7; index < 17*a-7; index++) {    
       //console.log(userObject[index])  
-    this.table9.unshift(              
+    this.table9.push(              
     
   //headerName:"Leakage power",
    // field: this.userObject[index] 
@@ -625,7 +739,7 @@ onSelectionChanged() {
       console.log(a)
       for (let index = 18*a-8; index <= 19*a-8; index++) {   
         //console.log(userObject[index])  
-      this.table10.unshift(              
+      this.table10.push(              
       
     //headerName:"Leakage power",
      // field: this.userObject[index] 
@@ -652,7 +766,7 @@ onSelectionChanged() {
         console.log(a)
         for (let index = 20*a-9; index < 21*a-9; index++) {   
           //console.log(userObject[index])  
-        this.table11.unshift(              
+        this.table11.push(              
         
       //headerName:"Leakage power",
        // field: this.userObject[index] 
@@ -679,7 +793,7 @@ onSelectionChanged() {
           console.log(a)
           for (let index = 22*a-10; index < 23*a-10; index++) {   
             //console.log(userObject[index])  
-          this.table12.unshift(              
+          this.table12.push(              
           
         //headerName:"Leakage power",
          // field: this.userObject[index] 
@@ -721,7 +835,7 @@ onSelectionChanged() {
     console.log(a)
     for (let index = 24*a-11; index < 25*a-11; index++) {    
       //console.log(userObject[index])  
-    this.table13.unshift(              
+    this.table13.push(              
     
   //headerName:"Leakage power",
    // field: this.userObject[index] 
@@ -748,7 +862,7 @@ onSelectionChanged() {
       console.log(a)
       for (let index = 26*a-12; index < 27*a-12; index++) {   
         //console.log(userObject[index])  
-      this.table14.unshift(              
+      this.table14.push(              
       
     //headerName:"Leakage power",
      // field: this.userObject[index] 
@@ -774,7 +888,7 @@ onSelectionChanged() {
         console.log(a)
         for (let index = 28*a-13; index <29*a-13; index++) {   
           //console.log(userObject[index])  
-        this.table15.unshift(              
+        this.table15.push(              
         
       //headerName:"Leakage power",
        // field: this.userObject[index] 
@@ -800,7 +914,7 @@ onSelectionChanged() {
           console.log(a)
           for (let index = 30*a-14; index < 31*a-14; index++) {   
             //console.log(userObject[index])  
-          this.table16.unshift(              
+          this.table16.push(              
           
         //headerName:"Leakage power",
          // field: this.userObject[index] 
@@ -843,7 +957,7 @@ onSelectionChanged() {
     console.log(a)
     for (let index = 32*a-15; index <33*a-15; index++) {    
       //console.log(userObject[index])  
-    this.table17.unshift(              
+    this.table17.push(              
     
   //headerName:"Leakage power",
    // field: this.userObject[index] 
@@ -870,7 +984,7 @@ onSelectionChanged() {
       console.log(a)
       for (let index = 34*a-16; index <35*a-16; index++) {   
         //console.log(userObject[index])  
-      this.table18.unshift(              
+      this.table18.push(              
       
     //headerName:"Leakage power",
      // field: this.userObject[index] 
@@ -896,7 +1010,7 @@ onSelectionChanged() {
         console.log(a)
         for (let index =  36*a-17; index <  37*a-17; index++) {   
           //console.log(userObject[index])  
-        this.table19.unshift(              
+        this.table19.push(              
         
       //headerName:"Leakage power",
        // field: this.userObject[index] 
@@ -923,7 +1037,7 @@ onSelectionChanged() {
           console.log(a)
           for (let index = 38*a-18; index < 39*a-18; index++) {   
             //console.log(userObject[index])  
-          this.table20.unshift(              
+          this.table20.push(              
           
         //headerName:"Leakage power",
          // field: this.userObject[index] 
@@ -1065,14 +1179,14 @@ calculDiff(){
     groupHidenOpenParents:true,
     columnDefs1:this.columnDefs1,
 
-   // rowData: this.rowData
+    //rowData: this.rowData
 
 
 
     
   }
   
-  
+
   
   onDeleteRow(){
     if (confirm('Are you sure you want to delete the selected rows?')) {
