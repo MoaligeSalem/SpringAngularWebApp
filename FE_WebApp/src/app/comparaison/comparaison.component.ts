@@ -504,10 +504,11 @@ onSelectionChanged() {
         fontWeight: 'bold' 
     },},
     //{headerName:this.getData(), field:this.getData()}
+    {headerName:"Total power", children:this.getData4()},
+
     {headerName:"Leakage power",children:this.getData1()},
     {headerName:"Internal power", children:this.getData2()},
     {headerName:"Switching power", children:this.getData3()},
-   {headerName:"Total power", children:this.getData4()}
   //   // {
   //   //   headerName:"csvname",
   //   //   field:"csvname",
@@ -698,10 +699,11 @@ onSelectionChanged() {
        fontWeight: 'bold' 
    },},
     //{headerName:this.getData(), field:this.getData()}
+    {headerName:"Total power", children:this.getData8()},
+
     {headerName:"Leakage power" ,children:this.getData5()},
     {headerName:"Internal power", children:this.getData6()},
     {headerName:"Switching power", children:this.getData7()},
-   {headerName:"Total power", children:this.getData8()}
 
   ]
 
@@ -820,10 +822,11 @@ onSelectionChanged() {
        fontWeight: 'bold' 
    },},
     //{headerName:this.getData(), field:this.getData()}
+    {headerName:"Total power", children:this.getData12()},
+
     {headerName:"Leakage power", children:this.getData9()},
     {headerName:"Internal power", children:this.getData10()},
     {headerName:"Switching power", children:this.getData11()},
-   {headerName:"Total power", children:this.getData12()}
 
   ]
 
@@ -942,10 +945,11 @@ onSelectionChanged() {
        fontWeight: 'bold' 
    },},
     //{headerName:this.getData(), field:this.getData()}
+    {headerName:"Total power", children:this.getData16()},
+
     {headerName:"Leakage power", children:this.getData13()},
     {headerName:"Internal power", children:this.getData14()},
     {headerName:"Switching power", children:this.getData15()},
-   {headerName:"Total power", children:this.getData16()}
 
   ]
 
@@ -1064,10 +1068,11 @@ onSelectionChanged() {
        fontWeight: 'bold' 
    },},
     //{headerName:this.getData(), field:this.getData()}
+    {headerName:"Total power", children:this.getData20()},
+
     {headerName:"Leakage power", children:this.getData17()},
     {headerName:"Internal power", children:this.getData18()},
     {headerName:"Switching power", children:this.getData19()},
-   {headerName:"Total power", children:this.getData20()}
 
   ]
 //t=[]
