@@ -63,3 +63,6 @@ table {
             height: 100%;
             padding: 0 !important;
         }
+        .ag-header-group-cell-with-group {
+            background-color: blue;
+        }

@@ -80,22 +80,22 @@
             height: 100%;
         }
         
-        .ag-header-cell-label {
+        .ag-header-cell-label.blueFill  {
             /* Necessary to allow for text to grow vertically */
             height: 100%;
             padding: 0 !important;
+            background-color: blue;
+
         }
-        h5 { 
-    font-style: italic;
-    color: rgb(10, 91, 184);
-    font-size: 1em;
-}
+        h5 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 25px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+
+        
         </style>
     </div>
   
   </header>
   
-  <h5>Design Power Summary per instance :
+  <h5>Design Power Summary per instance 
   </h5>
   
   <ag-grid-angular
@@ -114,7 +114,7 @@
   
   </ag-grid-angular>
 
-  <h5>Combinational Power Summary per instance :
+  <h5>Combinational Power Summary per instance 
   </h5>
 
 
@@ -133,7 +133,7 @@
 
 </ag-grid-angular>
 
-<h5>Register Power Summary per instance :
+<h5>Register Power Summary per instance 
 </h5>
 
 
@@ -151,7 +151,7 @@ rowSelection="multiple"
 
 </ag-grid-angular>
 
-<h5>Memory Power Summary per instance :
+<h5>Memory Power Summary per instance 
 </h5>
 
 
@@ -169,7 +169,7 @@ rowSelection="multiple"
 
 </ag-grid-angular>
 
-<h5>Clock Network Power Summary per instance :
+<h5>Clock Network Power Summary per instance 
 </h5>
 
 
@@ -201,6 +201,10 @@ rowSelection="multiple"
   [groupSelectsChildren]="true"
   [columnDefs]="colu"
   [aggFuncs]="aggFuncs"
+  [rowData]="rowData"
+
+
+
 
   
 >

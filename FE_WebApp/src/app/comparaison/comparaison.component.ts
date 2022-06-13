@@ -39,34 +39,36 @@ export class ComparaisonComponent implements OnInit {
 
   gridColumnApi:ColumnApi;
   gridColumnApi1:ColumnApi;
-  
-  table= [{field: '' , headerName:'',width:0,
-//   cellStyle: {
-//     backgroundColor: '', 
-//      fontWeight: '' 
-//  }
-}];
-  table2= [{field : '',headerName:'',width:0}];
-  //table2= [{ field:'Diff%', valueGetter:this.calculDiff}];
-  table3= [{ field:'',headerName:'',width:0}];
-  table4= [{ field:'',headerName:'',width:0}];
-  table5= [{ field:'',headerName:'',width:0}];
-  table6= [{ field:'',headerName:'',width:0}];
-  table7= [{ field:'',headerName:'',width:0}];
-  table8= [{ field:'',headerName:'',width:0}];
-  table9= [{ field:'',headerName:'',width:0}];
-  table10= [{ field:'',headerName:'',width:0}];
-  table11= [{ field:'',headerName:'',width:0}];
-  table12= [{ field:'',headerName:'',width:0}];
-  table13= [{ field:'',headerName:'',width:0}];
-  table14= [{ field:'',headerName:'',width:0}];
-  table15= [{ field:'',headerName:'',width:0}];
-  table16= [{ field:'',headerName:'',width:0}];
-  table17= [{ field:'',headerName:'',width:0}];
-  table18= [{ field:'',headerName:'',width:0}];
-  table19= [{ field:'',headerName:'',width:0}];
-  table20= [{ field:'',headerName:'',width:0}];
-  topRow=[]
+
+
+   table: Array<{field: string, headerName: string,width:number}>=[]
+//   table = [{field:'' , headerName:'',width:0,
+// //   cellStyle: {
+// //     backgroundColor: '', 
+// //      fontWeight: '' 
+// //  }
+// }];
+table2: Array<{field: string, headerName: string,width:number}>=[]
+//table2= [{ field:'Diff%', valueGetter:this.calculDiff}];
+table3: Array<{field: string, headerName: string,width:number}>=[]
+table4: Array<{field: string, headerName: string,width:number}>=[]
+table5: Array<{field: string, headerName: string,width:number}>=[]
+table6: Array<{field: string, headerName: string,width:number}>=[]
+table7: Array<{field: string, headerName: string,width:number}>=[]
+table8: Array<{field: string, headerName: string,width:number}>=[]
+table9: Array<{field: string, headerName: string,width:number}>=[]
+table10: Array<{field: string, headerName: string,width:number}>=[]
+table11: Array<{field: string, headerName: string,width:number}>=[]
+table12: Array<{field: string, headerName: string,width:number}>=[]
+table13: Array<{field: string, headerName: string,width:number}>=[]
+table14: Array<{field: string, headerName: string,width:number}>=[]
+table15: Array<{field: string, headerName: string,width:number}>=[]
+table16: Array<{field: string, headerName: string,width:number}>=[]
+table17: Array<{field: string, headerName: string,width:number}>=[]
+table18: Array<{field: string, headerName: string,width:number}>=[]
+table19: Array<{field: string, headerName: string,width:number}>=[]
+table20: Array<{field: string, headerName: string,width:number}>=[]
+topRow=[]
    aa = this.userObject.slice(1,2);
 
   searchValue;
@@ -185,9 +187,12 @@ export class ComparaisonComponent implements OnInit {
   // ]
   // ;
 
-rowData=[
-  {s:''}
-]
+// rowData=[
+//   {s:''}
+// ]
+
+rowData: Array<{ s: string}>=[]
+
 
 //   getSum(){   
 //     this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
@@ -693,7 +698,7 @@ onSelectionChanged() {
        fontWeight: 'bold' 
    },},
     //{headerName:this.getData(), field:this.getData()}
-    {headerName:"Leakage power", children:this.getData5()},
+    {headerName:"Leakage power" ,children:this.getData5()},
     {headerName:"Internal power", children:this.getData6()},
     {headerName:"Switching power", children:this.getData7()},
    {headerName:"Total power", children:this.getData8()}
