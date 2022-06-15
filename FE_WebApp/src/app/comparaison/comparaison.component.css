@@ -2,6 +2,11 @@
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css"; 
 
 
+
+
+
+
+
 table {
     width: 480px;
     text-align: left;
@@ -66,3 +71,6 @@ table {
         .ag-header-group-cell-with-group {
             background-color: blue;
         }
+        .header_one {
+            background-color: red;
+          }

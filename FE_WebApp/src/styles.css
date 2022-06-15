@@ -26,3 +26,51 @@
     width: 300px;
     
 }
+.ag-header-group-cell-with-group {
+    background-color: CornflowerBlue;
+    height: 100%;
+    justify-content: center;
+
+    padding: 0 !important;
+
+  
+}
+
+  .ag-header-cell-label {
+    /* Necessary to allow for text to grow vertically */
+    height: 100%;
+    justify-content: center;
+
+    padding: 0 !important;
+}
+.ag-pivot-off .ag-header-group-cell {
+    font-size: 15px;
+    color: black;
+    height: 100%;
+
+    padding: 0 !important;
+
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center;
+}
+
+.ag-pivot-on {
+    font-size: 25px;
+    color: green;
+}
+.ag-cell-label-container {
+    /* Necessary to allow for text to grow vertically */
+    height: 100%;
+}
+.ag-theme-balham .ag-header-cell{
+    background-color: DarkGray;
+    font-size: 12px;
+    color: black;
+    height: 100%;
+
+    padding: 0 !important;
+}
+.ag-header-group-cell-label {
+    justify-content: center !important;
+}

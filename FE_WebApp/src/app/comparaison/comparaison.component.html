@@ -87,39 +87,50 @@
             background-color: blue;
 
         }
-        h5 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 25px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
-
+        h5 { color: DarkBlue; font-family: 'Helvetica Neue', sans-serif; font-size: 20px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+        
+        .header_one {
+            background-color: red;
+          }
         
         </style>
     </div>
   
   </header>
-  
-  <h5>Design Power Summary per instance 
-  </h5>
-  
-  <ag-grid-angular
-  style="width: 9000px; height: 500px;"
-    class="ag-theme-balham" 
-    (selectionChanged)="onSelectionChanged()"
-    [autoGroupColumnDef]="autoGroupColumnDef"
-    [gridOptions]="gridOptions"
-    rowSelection="single"
-    [groupSelectsChildren]="true"
-    [aggFuncs]="aggFuncs"
-    [columnDefs]="columnDefs"
-    (gridReady)="onGridReady1($event)"
-    
-  >
-  
-  </ag-grid-angular>
+  <div class="row">
+    <div class="row">
 
+      <h5>Design Power Summary per instance 
+      </h5>
+      
+      <ag-grid-angular
+      style="width: 5000px; height: 500px;"
+        class="ag-theme-balham" 
+        (selectionChanged)="onSelectionChanged()"
+        [autoGroupColumnDef]="autoGroupColumnDef"
+        [gridOptions]="gridOptions"
+        rowSelection="multiple"
+        [groupSelectsChildren]="true"
+        [aggFuncs]="aggFuncs"
+        [columnDefs]="columnDefs"
+        (gridReady)="onGridReady1($event)"
+        
+      >
+      
+      </ag-grid-angular>
+
+    </div>
+   
+  </div>
+  
+  <div class="row">
+    <div class="row">
   <h5>Combinational Power Summary per instance 
   </h5>
 
 
   <ag-grid-angular
-  style="width: 9000px; height: 500px;"
+  style="width: 5000px; height: 500px;"
   class="ag-theme-balham" 
   (selectionChanged)="onSelectionChanged()"
   [autoGroupColumnDef]="autoGroupColumnDef"
@@ -132,13 +143,16 @@
   >
 
 </ag-grid-angular>
-
+</div>  
+</div>
+<div class="row">
+  <div class="row">
 <h5>Register Power Summary per instance 
 </h5>
 
 
 <ag-grid-angular
-style="width: 9000px; height: 500px;"
+style="width: 5000px; height: 500px;"
 class="ag-theme-balham" 
 (selectionChanged)="onSelectionChanged()"
 [autoGroupColumnDef]="autoGroupColumnDef"
@@ -150,13 +164,17 @@ rowSelection="multiple"
 >
 
 </ag-grid-angular>
+</div>  
+</div>
 
+<div class="row">
+  <div class="row">
 <h5>Memory Power Summary per instance 
 </h5>
 
 
 <ag-grid-angular
-style="width: 9000px; height: 500px;"
+style="width: 5000px; height: 500px;"
 class="ag-theme-balham" 
 (selectionChanged)="onSelectionChanged()"
 [autoGroupColumnDef]="autoGroupColumnDef"
@@ -168,13 +186,17 @@ rowSelection="multiple"
 >
 
 </ag-grid-angular>
+</div>  
+</div>
 
+<div class="row">
+  <div class="row">
 <h5>Clock Network Power Summary per instance 
 </h5>
 
 
 <ag-grid-angular
-style="width: 9000px; height: 500px;"
+style="width: 5000px; height: 500px;"
 class="ag-theme-balham" 
 (selectionChanged)="onSelectionChanged()"
 [autoGroupColumnDef]="autoGroupColumnDef"
@@ -187,12 +209,16 @@ rowSelection="multiple"
 
 </ag-grid-angular>
 
+</div>  
+</div>
 
+<div class="row">
+  <div class="row">
 <h5>Summary
 </h5>
 <div>
 <ag-grid-angular
-  style="width: 9000px; height: 500px;"
+  style="width: 1500px; height: 500px;"
   class="ag-theme-balham" 
   (selectionChanged)="onSelectionChanged()"
   [autoGroupColumnDef]="autoGroupColumnDef"
@@ -210,6 +236,8 @@ rowSelection="multiple"
 >
 
 </ag-grid-angular>
+</div>  
+</div>
 
 </div>
 

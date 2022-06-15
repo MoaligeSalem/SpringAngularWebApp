@@ -16,7 +16,7 @@ import { UploadFilesComponent } from '../upload-files/upload-files.component';
   styleUrls: ['./comparaison.component.css']
 })
 export class ComparaisonComponent implements OnInit {
-
+ 
 
      object=""
      object2=""
@@ -41,33 +41,26 @@ export class ComparaisonComponent implements OnInit {
   gridColumnApi1:ColumnApi;
 
 
-   table: Array<{field: string, headerName: string,width:number}>=[]
-//   table = [{field:'' , headerName:'',width:0,
-// //   cellStyle: {
-// //     backgroundColor: '', 
-// //      fontWeight: '' 
-// //  }
-// }];
-table2: Array<{field: string, headerName: string,width:number}>=[]
-//table2= [{ field:'Diff%', valueGetter:this.calculDiff}];
-table3: Array<{field: string, headerName: string,width:number}>=[]
-table4: Array<{field: string, headerName: string,width:number}>=[]
-table5: Array<{field: string, headerName: string,width:number}>=[]
-table6: Array<{field: string, headerName: string,width:number}>=[]
-table7: Array<{field: string, headerName: string,width:number}>=[]
-table8: Array<{field: string, headerName: string,width:number}>=[]
-table9: Array<{field: string, headerName: string,width:number}>=[]
-table10: Array<{field: string, headerName: string,width:number}>=[]
-table11: Array<{field: string, headerName: string,width:number}>=[]
-table12: Array<{field: string, headerName: string,width:number}>=[]
-table13: Array<{field: string, headerName: string,width:number}>=[]
-table14: Array<{field: string, headerName: string,width:number}>=[]
-table15: Array<{field: string, headerName: string,width:number}>=[]
-table16: Array<{field: string, headerName: string,width:number}>=[]
-table17: Array<{field: string, headerName: string,width:number}>=[]
-table18: Array<{field: string, headerName: string,width:number}>=[]
-table19: Array<{field: string, headerName: string,width:number}>=[]
-table20: Array<{field: string, headerName: string,width:number}>=[]
+table: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table2: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table3: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table4: Array<{field: string,  type: string,headerName: string,width:number,cellStyle:object}>=[]
+table5: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table6: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table7: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table8: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table9: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table10: Array<{field: string,type: string, headerName: string,width:number,cellStyle:object}>=[]
+table11: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table12: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table13: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table14: Array<{field: string,type: string, headerName: string,width:number,cellStyle:object}>=[]
+table15: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table16: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table17: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table18: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table19: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
+table20: Array<{field: string, type: string,headerName: string,width:number,cellStyle:object}>=[]
 topRow=[]
    aa = this.userObject.slice(1,2);
 
@@ -154,9 +147,27 @@ topRow=[]
     'Clock intenal ' ,
      'Clock switching ',
     'Clock total'
-  ]
-  ;
+  ];
 
+  rowData2=['']
+getNodes(){
+  this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
+  const userObject = JSON.parse(this.object)
+  const userObject12 = userObject.slice(1,2)
+
+  
+   this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
+   const a = JSON.parse(this.object2)
+   //for (let i = 0; i <this.rowData1.length; i++) { 
+
+   for (let index = 1; index <userObject[0].length; index+=a+(a-1)) { 
+     
+     this.rowData2.push(              
+userObject12[0][index].toString())
+
+}  
+   return this.rowData2
+}
 
 
   // rowData=[
@@ -183,15 +194,19 @@ topRow=[]
   //   { a: 'Clock switching ',s:'' },
   //  {  a:'Clock total',s:'' },
 
-  //  // {s:this.aa[5]}
-  // ]
-  // ;
 
-// rowData=[
-//   {s:''}
-// ]
+rowData: Array<{ a:string,s: string}>=[]
 
-rowData: Array<{ s: string}>=[]
+// getCompo(){
+//   for(let i=0;i<this.rowData1.length;i++){
+//     this.rowData.push(              
+//       {a:this.rowData1[i],s:''})
+//   }
+//   return 'a'
+// }
+ //colu: Array<{ headerName: string,children:[{field:string}]}>=[]
+// getHead();
+
 
 
 //   getSum(){   
@@ -227,24 +242,34 @@ rowData: Array<{ s: string}>=[]
     
      this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
      const a = JSON.parse(this.object2)
-     //for (let i = 0; i <this.rowData1.length; i++) { 
+     for (let i = 0; i <this.rowData1.length; i++) { 
 
-     for (let index = 1; index <userObject[0].length; index+=a+(a-1)) { 
+     //for (let index = 1; index <userObject[0].length; index+=a+(a-1)) { 
        
-
-
        this.rowData.push(              
- // { s:userObject12[index]})
-  {s:userObject12[0][index]})
-
-  //{ field:index.toString()})
-
+  {a:this.rowData1[i],s:this.rowData2[i]})
 
 }  
 //for(let i=1;i<=a;i++){
      return {field:'s'}
    //  return
   }
+// getHead(){
+//   this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
+//     const userObject = JSON.parse(this.object)
+//   this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
+//      const a = JSON.parse(this.object2)
+//      for(let i=1; i<=a; i++){
+//       {headerName:(userObject[0][i]).toString()}
+//             this.colu.push(             
+
+//       {headerName:(userObject[0][i]).toString(), children:[{field:''}]})
+//     }
+//      return this.colu
+// }
+
+
+
   colu=[
     {
       headerName:"COMPONENTS",
@@ -263,7 +288,7 @@ rowData: Array<{ s: string}>=[]
       headerName:"POWER NUMBERS",
       children:[this.getCo()],
     },
-       
+    //this.getHead()
 ];
 
     // {
@@ -312,17 +337,11 @@ rowData: Array<{ s: string}>=[]
      
   }
   aggFuncs: { aa: (params: any) => number; };
-  UploadFilesComponent: UploadFilesComponent;
- 
- // rowData = [this.userObject];
-  
+  UploadFilesComponent: UploadFilesComponent;  
 
 
-  ngOnInit(){
-  }
+  ngOnInit(){ }
 ;
-
-
 
 
 onSelectionChanged() {
@@ -343,11 +362,6 @@ onSelectionChanged() {
   // }
 
    
-
- // rowData=[{Name: this.userObject[0]}];
-  // Index(index){
-  //   return index.toString
-  // }
   // setHead(){
   //   this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
   //   const userObject = JSON.parse(this.object)
@@ -382,35 +396,28 @@ onSelectionChanged() {
     this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
    const userObject = JSON.parse(this.object)
    const aaa = userObject.slice(1,2)
-   console.log(aaa[0][5])
-   console.log(userObject.slice(1,))
-   console.log(userObject[0].length)
     this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
     const a = JSON.parse(this.object2)
 
-    //this.dataS2=[]   
     console.log(a)
     for (let index = 1; index <= a; index++) { 
-      //for(let i=1;i<userObject[0].length;i++){
-   
-      //console.log(userObject[index])  
-    this.table.push(              
-      //headerName:"Leakage power",
-   // field: this.userObject[index] 
+       this.table.push(              
+
   {
-   field: index.toString(),headerName:(userObject[0][index]).toString() , width:230,
-//    cellStyle: {
-//     backgroundColor: '', 
-//      fontWeight: '' 
-//  }
+   field: index.toString(),headerName:(userObject[0][index]).toString() , type: 'rightAligned', width:100,
+   cellStyle: {
+     fontWeight: 'bold',
+ }
 }  ,)} 
-  //{field:'Diff'}         
+
   for (let index = a+1; index <2*a; index++) { 
-    this.table.push(  {headerName:(userObject[0][index]).toString() ,field:index.toString(), width:230,
-  //   cellStyle: {
-  //     backgroundColor: '', 
-  //      fontWeight: 'bold' 
-  //  }
+    this.table.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned' ,field:index.toString(), width:120,
+    cellStyle: {
+      color: 'blue', 
+
+      backgroundColor: 'AliceBlue', 
+       fontWeight: 'bold' 
+   }
   }   )          
    }
      
@@ -423,24 +430,26 @@ onSelectionChanged() {
       this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
       const a = JSON.parse(this.object2)
   
-      //this.dataS2=[]   
-      console.log(a)
+     
       for (let index = 2*a; index < 3*a; index++) {   
-        //console.log(userObject[index])  
       this.table2.push(              
       
-     // headerName:(index+1)*10,       
-    //headerName:"Leakage power",
-     // field: this.userObject[index] 
-     {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}  
-           //field: this.userObject[index],       
+     {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+      backgroundColor: '', 
+      
+       fontWeight: 'bold' 
+   }}  
    
       )   
       
        } 
        for (let index = 3*a; index <4*a-1; index++) { 
-        this.table2.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230} )
-        //this.table2.push(  {field:'Diff%'} )          
+        this.table2.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+          backgroundColor: 'AliceBlue', 
+          color: 'blue', 
+
+           fontWeight: 'bold' 
+       }} )
           
        } 
        return this.table2  }
@@ -448,142 +457,67 @@ onSelectionChanged() {
        getData3(){   
         this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
         const userObject = JSON.parse(this.object)
-        console.log(userObject)
         this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
         const a = JSON.parse(this.object2)
     
-        //this.dataS2=[]   
-        console.log(a)
         for (let index = 4*a-1; index < 5*a-1; index++) {   
-          //console.log(userObject[index])  
         this.table3.push(              
         
-      //headerName:"Leakage power",
-       // field: this.userObject[index] 
-       {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}      
-        //field: this.userObject[index],       
+    
+       {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+        backgroundColor: '', 
+         fontWeight: 'bold' 
+     }}      
    
         )   
         
          } 
          for (let index = 5*a-1; index < 6*a-2; index++) { 
-          this.table3.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+          this.table3.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+            backgroundColor: 'AliceBlue', 
+            color: 'blue', 
+
+             fontWeight: 'bold' 
+         }}   )          
          } 
          return this.table3  }
 
          getData4(){   
           this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
           const userObject = JSON.parse(this.object)
-          console.log(userObject)
           this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
           const a = JSON.parse(this.object2)
       
-          //this.dataS2=[]   
-          console.log(a)
           for (let index = 6*a-2; index < 7*a-2; index++) {   
-            //console.log(userObject[index])  
           this.table4.push(              
           
-        //headerName:"Leakage power",
-         // field: this.userObject[index] 
-         {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}     
-          //field: this.userObject[index],       
-      
+         {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+          backgroundColor: '', 
+           fontWeight: 'bold' 
+       }}           
           )   
           
            }  
            for (let index = 7*a-2; index < 8*a-3; index++) { 
-            this.table4.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+            this.table4.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString() ,type: 'rightAligned', width:120, cellStyle: {
+              backgroundColor: 'AliceBlue', 
+              color: 'blue', 
+
+               fontWeight: 'bold' 
+           }}   )          
            } 
            return this.table4  }
 
 
   columnDefs=[
-    {headerName:"Instances",field:'0', cellStyle: {
+    {headerName:"INSTANCES",field:'0',width:250, cellStyle: {
        backgroundColor: 'AliceBlue', 
         fontWeight: 'bold' 
     },},
-    //{headerName:this.getData(), field:this.getData()}
     {headerName:"Total power", children:this.getData4()},
-
     {headerName:"Leakage power",children:this.getData1()},
     {headerName:"Internal power", children:this.getData2()},
     {headerName:"Switching power", children:this.getData3()},
-  //   // {
-  //   //   headerName:"csvname",
-  //   //   field:"csvname",
-  //   //   width:90,
-  //   //   rowGroupIndex:1,      
-  //   //   filter:'agTextColumnFilter',
-
-      
-  //   // },{
-  //   //   headerName:"path",
-  //   //   field:"path",
-  //   //   width:90,
-  //   //   filter:'agNumberColumnFilter',
-  //   // },
-  //  {
-    //  headerName:"INSTANCES",
-      
-     //valueGetter: 'data.Name',
-     //field:'0',
-     //cellStyle: {
-    //  backgroundColor: 'AliceBlue', 
-    //  fontWeight: 'bold' 
- // },
-     
-       //width:105, 
-       //filter:'agNumberColumnFilter',
-     //},
-
-     
-    //{
-      // headerName:"Leakage Power",
-      // field : '1',
-  //     filter:'agNumberColumnFilter',
-    //  children:[
-  //       {field:'1', width:136, },
-  //       {headerName:Object.keys(this.object)[3],field:Object.keys(this.userObject)[5], width:138,},
-  //       {headerName:"Diff%",      valueGetter: abValueGetter,
-  //        width:72,}
-
-  //           ]
-     //},
-
-       
-
-    //{
-      //headerName:"Internal Power",
-      //filter:'agNumberColumnFilter',
-      //children:[
-   //     {field:'jk', width:136,},
-     //   {headerName:"RTL_NEW_PA_DES",field:'4', width:138,},
-       // {headerName:"Diff%",field:'diff2', width:72,}
-
-      //]
-    //},
-     //{
-      // headerName:"Switching Power",
-  //     //field:"fields",
-  //     filter:'agNumberColumnFilter',
-       //children:[
-  //       {headerName:"RTL_OLD_PA_DES",field:'undefined Clock_Network_Internal_Power', width:136,},
-  //       {headerName:"RTL_NEW_PA_DES",field:'undefined Clock_Network_Internal_Power', width:138,},
-  //       {headerName:"Diff%",field:'diff3', width:72,}
-
-      // ]
-     //},
-     //{
-      //headerName:"Total Power",
-  //     //field:"fields",
-  //     filter:'agNumberColumnFilter',
-       //children:[
-  //       {headerName:"RTL_OLD_PA_DES",field:'undefined Clock_Network_Internal_Power', width:138,},
-  //       {headerName:"RTL_NEW_PA_DES",field:'undefined Clock_Network_Internal_Power', width:138,},
-  //       {headerName:"Diff%",field:'diff4', width:72,}
-       //]
-     //}
    ];
 
   
@@ -594,113 +528,114 @@ onSelectionChanged() {
    getData5(){   
     this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
     const userObject = JSON.parse(this.object)
-    console.log(userObject)
     this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
     const a = JSON.parse(this.object2)
 
-    //this.dataS2=[]   
-    console.log(a)
+ 
     for (let index = 8*a-3; index < 9*a-3; index++) {    
-      //console.log(userObject[index])  
     this.table5.push(              
-      //headerName:"Leakage power",
-   // field: this.userObject[index] 
-  {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}    
-    //field: this.userObject[index],         
+  {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+    backgroundColor: '', 
+    
+     fontWeight: 'bold' 
+ }}    
     )   
     
      }  
      for (let index = 9*a-3; index < 10*a-4; index++) { 
-      this.table5.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+      this.table5.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), type: 'rightAligned', width:120, cellStyle: {
+        backgroundColor: 'AliceBlue', 
+        color: 'blue', 
+
+         fontWeight: 'bold' 
+     }}   )          
      } 
      return this.table5  }
 
      getData6(){   
       this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
       const userObject = JSON.parse(this.object)
-      console.log(userObject)
       this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
       const a = JSON.parse(this.object2)
   
-      //this.dataS2=[]   
-      console.log(a)
       for (let index = 10*a-4; index < 11*a-4; index++) {   
-        //console.log(userObject[index])  
       this.table6.push(              
       
-    //headerName:"Leakage power",
-     // field: this.userObject[index] 
-     {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}  
-           //field: this.userObject[index],       
+     {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+      backgroundColor: '', 
+       fontWeight: 'bold' 
+   }}  
      
       )   
       
        }  
        for (let index = 11*a-4; index < 12*a-5; index++) {
-        this.table6.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+        this.table6.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), type: 'rightAligned', width:120, cellStyle: {
+          backgroundColor: 'AliceBlue', 
+          color: 'blue', 
+
+           fontWeight: 'bold' 
+       }}   )          
        } 
        return this.table6  }
 
        getData7(){   
         this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
         const userObject = JSON.parse(this.object)
-        console.log(userObject)
         this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
         const a = JSON.parse(this.object2)
-    
-        //this.dataS2=[]   
-        console.log(a)
+  
         for (let index = 12*a-5; index < 13*a-5; index++) {   
-          //console.log(userObject[index])  
         this.table7.push(              
-        
-      //headerName:"Leakage power",
-       // field: this.userObject[index] 
-       {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}      
-        //field: this.userObject[index],           
-        )   
+       {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+        backgroundColor: '', 
+         fontWeight: 'bold' 
+     }}              )   
         
          }  
          for (let index = 13*a-5; index < 14*a-6; index++) { 
-          this.table7.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+          this.table7.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), type: 'rightAligned', width:120, cellStyle: {
+            backgroundColor: 'AliceBlue', 
+            color: 'blue', 
+ 
+             fontWeight: 'bold' 
+         }}   )          
          } 
          return this.table7  }
 
          getData8(){   
           this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
           const userObject = JSON.parse(this.object)
-          console.log(userObject)
           this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
           const a = JSON.parse(this.object2)
       
-          //this.dataS2=[]   
-          console.log(a)
-          for (let index = 14*a-6; index < 15*a-6; index++) {   
-            //console.log(userObject[index])  
-          this.table8.push(              
           
-        //headerName:"Leakage power",
-         // field: this.userObject[index] 
-         {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}     
-          //field: this.userObject[index],       
-           
+          for (let index = 14*a-6; index < 15*a-6; index++) {   
+          this.table8.push(              
+         {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+          backgroundColor: '', 
+           fontWeight: 'bold' 
+       }}                
           )   
           
            }  
            for (let index = 15*a-6; index < 16*a-7; index++) { 
-            this.table8.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+            this.table8.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), type: 'rightAligned', width:120, cellStyle: {
+              backgroundColor: 'AliceBlue', 
+              color: 'blue', 
+
+               fontWeight: 'bold' 
+           }}   )          
            } 
            return this.table8  }
 
 
   columnDefs1=[
-    {headerName:"Instances",field:'0',cellStyle: {
+    {headerName:"INSTANCES",field:'0',cellStyle: {
       backgroundColor: 'AliceBlue', 
        fontWeight: 'bold' 
    },},
-    //{headerName:this.getData(), field:this.getData()}
     {headerName:"Total power", children:this.getData8()},
-
     {headerName:"Leakage power" ,children:this.getData5()},
     {headerName:"Internal power", children:this.getData6()},
     {headerName:"Switching power", children:this.getData7()},
@@ -712,118 +647,123 @@ onSelectionChanged() {
   getData9(){   
     this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
     const userObject = JSON.parse(this.object)
-    console.log(userObject)
     this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
     const a = JSON.parse(this.object2)
 
-    //this.dataS2=[]   
-    console.log(a)
     for (let index = 16*a-7; index < 17*a-7; index++) {    
-      //console.log(userObject[index])  
     this.table9.push(              
-    
-  //headerName:"Leakage power",
-   // field: this.userObject[index] 
-  {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}    
-    //field: this.userObject[index],       
+
+  {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+    backgroundColor: '', 
+     fontWeight: 'bold' 
+ }}    
 
     )   
     
      }   
      for (let index = 17*a-7; index < 18*a-8; index++) { 
-      this.table9.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+      this.table9.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), type: 'rightAligned', width:120, cellStyle: {
+        backgroundColor: 'AliceBlue', 
+        color: 'blue', 
+
+         fontWeight: 'bold' 
+     }}   )          
      } 
      return this.table9  }
 
      getData10(){   
       this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
       const userObject = JSON.parse(this.object)
-      console.log(userObject)
       this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
       const a = JSON.parse(this.object2)
   
-      //this.dataS2=[]   
-      console.log(a)
       for (let index = 18*a-8; index <= 19*a-8; index++) {   
-        //console.log(userObject[index])  
       this.table10.push(              
       
-    //headerName:"Leakage power",
-     // field: this.userObject[index] 
-     {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}  
-           //field: this.userObject[index],       
-      
+   
+     {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+      backgroundColor: '', 
+
+       fontWeight: 'bold' 
+   }}        
 
       )   
       
        }  
        for (let index = 19*a-8; index < 20*a-9; index++) { 
-        this.table10.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+        this.table10.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+          backgroundColor: 'AliceBlue', 
+          color: 'blue', 
+
+           fontWeight: 'bold' 
+       }}   )          
        } 
        return this.table10  }
 
        getData11(){   
         this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
         const userObject = JSON.parse(this.object)
-        console.log(userObject)
         this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
         const a = JSON.parse(this.object2)
     
-        //this.dataS2=[]   
-        console.log(a)
         for (let index = 20*a-9; index < 21*a-9; index++) {   
-          //console.log(userObject[index])  
         this.table11.push(              
+    
+       {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+        backgroundColor: '', 
         
-      //headerName:"Leakage power",
-       // field: this.userObject[index] 
-       {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}      
-        //field: this.userObject[index],       
+         fontWeight: 'bold' 
+     }}      
         
  
         )   
         
          }  
          for (let index = 21*a-9; index < 22*a-10; index++) { 
-          this.table11.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+          this.table11.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+            backgroundColor: 'AliceBlue', 
+            color: 'blue', 
+
+             fontWeight: 'bold' 
+         }}   )          
          } 
          return this.table11  }
 
          getData12(){   
           this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
           const userObject = JSON.parse(this.object)
-          console.log(userObject)
           this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
           const a = JSON.parse(this.object2)
       
-          //this.dataS2=[]   
-          console.log(a)
           for (let index = 22*a-10; index < 23*a-10; index++) {   
-            //console.log(userObject[index])  
           this.table12.push(              
           
-        //headerName:"Leakage power",
-         // field: this.userObject[index] 
-         {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}     
-          //field: this.userObject[index],       
+     
+         {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+          backgroundColor: '', 
+           fontWeight: 'bold' 
+       }}     
  
           )   
           
            }   
            for (let index = 23*a-10; index < 24*a-11; index++) { 
-            this.table12.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+            this.table12.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+              backgroundColor: 'AliceBlue', 
+              color: 'blue', 
+ 
+               fontWeight: 'bold' 
+           }}   )          
            } 
            return this.table12 }
 
 
   columnDefs2=[
-    {headerName:"Instances",field:'0',cellStyle: {
+    {headerName:"INSTANCES",field:'0',cellStyle: {
       backgroundColor: 'AliceBlue', 
        fontWeight: 'bold' 
    },},
-    //{headerName:this.getData(), field:this.getData()}
     {headerName:"Total power", children:this.getData12()},
-
     {headerName:"Leakage power", children:this.getData9()},
     {headerName:"Internal power", children:this.getData10()},
     {headerName:"Switching power", children:this.getData11()},
@@ -835,53 +775,57 @@ onSelectionChanged() {
   getData13(){   
     this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
     const userObject = JSON.parse(this.object)
-    console.log(userObject)
     this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
     const a = JSON.parse(this.object2)
 
-    //this.dataS2=[]   
-    console.log(a)
+  
     for (let index = 24*a-11; index < 25*a-11; index++) {    
-      //console.log(userObject[index])  
     this.table13.push(              
-    
-  //headerName:"Leakage power",
-   // field: this.userObject[index] 
-  {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}    
-    //field: this.userObject[index],       
+ 
+  {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+    backgroundColor: '', 
+     fontWeight: 'bold' 
+ }}    
     
   
     )   
     
      } 
      for (let index = 25*a-11; index < 26*a-12; index++) { 
-      this.table13.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+      this.table13.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+        backgroundColor: 'AliceBlue', 
+        color: 'blue', 
+
+         fontWeight: 'bold' 
+     }}   )          
      } 
      return this.table13  }
 
      getData14(){   
       this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
       const userObject = JSON.parse(this.object)
-      console.log(userObject)
       this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
       const a = JSON.parse(this.object2)
   
-      //this.dataS2=[]   
-      console.log(a)
       for (let index = 26*a-12; index < 27*a-12; index++) {   
-        //console.log(userObject[index])  
       this.table14.push(              
       
-    //headerName:"Leakage power",
-     // field: this.userObject[index] 
-     {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}  
-           //field: this.userObject[index],       
+   
+     {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+      backgroundColor: '', 
+       fontWeight: 'bold' 
+   }}  
      
       )   
       
        }   
        for (let index = 27*a-12; index < 28*a-13; index++) { 
-        this.table14.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+        this.table14.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+          backgroundColor: 'AliceBlue', 
+          color: 'blue', 
+ 
+           fontWeight: 'bold' 
+       }}   )          
        } 
        return this.table14  }
 
@@ -892,61 +836,60 @@ onSelectionChanged() {
         this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
         const a = JSON.parse(this.object2)
     
-        //this.dataS2=[]   
-        console.log(a)
         for (let index = 28*a-13; index <29*a-13; index++) {   
-          //console.log(userObject[index])  
         this.table15.push(              
-        
-      //headerName:"Leakage power",
-       // field: this.userObject[index] 
-       {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}      
-        //field: this.userObject[index],       
+    
+       {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+        backgroundColor: '', 
+         fontWeight: 'bold' 
+     }}      
    
         )   
         
          }   
          for (let index = 29*a-13; index < 30*a-14; index++) { 
-          this.table15.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+          this.table15.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+            backgroundColor: 'AliceBlue', 
+            color: 'blue', 
+
+             fontWeight: 'bold' 
+         }}   )          
          } 
          return this.table15  }
 
          getData16(){   
           this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
           const userObject = JSON.parse(this.object)
-          console.log(userObject)
           this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
           const a = JSON.parse(this.object2)
       
-          //this.dataS2=[]   
-          console.log(a)
           for (let index = 30*a-14; index < 31*a-14; index++) {   
-            //console.log(userObject[index])  
           this.table16.push(              
-          
-        //headerName:"Leakage power",
-         // field: this.userObject[index] 
-         {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}     
-          //field: this.userObject[index],       
+         {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+          backgroundColor: '', 
+           fontWeight: 'bold' 
+       }}     
           
 
           )   
           
            }  
            for (let index = 31*a-14; index < 32*a-15; index++) { 
-            this.table16.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+            this.table16.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+              backgroundColor: 'AliceBlue', 
+              color: 'blue', 
+               fontWeight: 'bold' 
+           }}   )          
            } 
            return this.table16  }
 
 
   columnDefs3=[
-    {headerName:"Instances",field:'0',cellStyle: {
+    {headerName:"INSTANCES",field:'0',cellStyle: {
       backgroundColor: 'AliceBlue', 
        fontWeight: 'bold' 
    },},
-    //{headerName:this.getData(), field:this.getData()}
     {headerName:"Total power", children:this.getData16()},
-
     {headerName:"Leakage power", children:this.getData13()},
     {headerName:"Internal power", children:this.getData14()},
     {headerName:"Switching power", children:this.getData15()},
@@ -958,126 +901,121 @@ onSelectionChanged() {
   getData17(){   
     this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
     const userObject = JSON.parse(this.object)
-    console.log(userObject)
     this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
     const a = JSON.parse(this.object2)
 
-    //this.dataS2=[]   
-    console.log(a)
     for (let index = 32*a-15; index <33*a-15; index++) {    
-      //console.log(userObject[index])  
     this.table17.push(              
-    
-  //headerName:"Leakage power",
-   // field: this.userObject[index] 
-  {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}    
-    //field: this.userObject[index],       
-    
+ 
+  {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+    backgroundColor: '', 
+     fontWeight: 'bold' 
+ }}       
  
     )   
     
      }  
      for (let index = 33*a-15; index < 34*a-16; index++) { 
-      this.table17.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+      this.table17.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+        backgroundColor: 'AliceBlue', 
+        color: 'blue', 
+         fontWeight: 'bold' 
+     }}   )          
      } 
      return this.table17  }
 
      getData18(){   
       this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
       const userObject = JSON.parse(this.object)
-      console.log(userObject)
       this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
       const a = JSON.parse(this.object2)
   
-      //this.dataS2=[]   
-      console.log(a)
       for (let index = 34*a-16; index <35*a-16; index++) {   
-        //console.log(userObject[index])  
       this.table18.push(              
-      
-    //headerName:"Leakage power",
-     // field: this.userObject[index] 
-     {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}  
-           //field: this.userObject[index],       
+   
+     {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+      backgroundColor: '', 
+       fontWeight: 'bold' 
+   }}  
      
       )   
       
        }  
        for (let index = 35*a-16; index < 36*a-17; index++) { 
-        this.table18.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+        this.table18.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+          backgroundColor: 'AliceBlue', 
+          color: 'blue', 
+           fontWeight: 'bold' 
+       }}   )          
        } 
        return this.table18  }
 
        getData19(){   
         this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
         const userObject = JSON.parse(this.object)
-        console.log(userObject)
         this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
         const a = JSON.parse(this.object2)
     
-        //this.dataS2=[]   
-        console.log(a)
         for (let index =  36*a-17; index <  37*a-17; index++) {   
-          //console.log(userObject[index])  
         this.table19.push(              
-        
-      //headerName:"Leakage power",
-       // field: this.userObject[index] 
-       {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}      
-        //field: this.userObject[index],       
-        
+    
+       {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+        backgroundColor: '', 
+         fontWeight: 'bold' 
+     }}              
    
         )   
         
          }  
          for (let index = 37*a-17; index < 38*a-18; index++) { 
-          this.table19.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+          this.table19.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+            backgroundColor: 'AliceBlue', 
+            color: 'blue',  
+             fontWeight: 'bold' 
+         }}   )          
          } 
          return this.table19  }
 
          getData20(){   
           this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
           const userObject = JSON.parse(this.object)
-          console.log(userObject)
           this.dataService.sharedParam2.subscribe(param=>this.object2=JSON.stringify(param));
           const a = JSON.parse(this.object2)
       
-          //this.dataS2=[]   
-          console.log(a)
           for (let index = 38*a-18; index < 39*a-18; index++) {   
-            //console.log(userObject[index])  
           this.table20.push(              
           
-        //headerName:"Leakage power",
-         // field: this.userObject[index] 
-         {field:index.toString(),headerName:(userObject[0][index]).toString(), width:230}     
-          //field: this.userObject[index],       
-
+      
+         {field:index.toString(),headerName:(userObject[0][index]).toString(), type: 'rightAligned', width:100, cellStyle: {
+          backgroundColor: '', 
+           fontWeight: 'bold' 
+       }}     
           )   
           
            }  
            for (let index = 39*a-18; index < 40*a-19; index++) { 
-            this.table20.push(  {headerName:(userObject[0][index]).toString(),field:(index).toString(), width:230}   )          
+            this.table20.push(  {headerName:(userObject[0][index]).toString(), type: 'rightAligned',field:(index).toString(), width:120, cellStyle: {
+              backgroundColor: 'AliceBlue', 
+              textAlign: 'center',
+              color: 'blue',  
+               fontWeight: 'bold' 
+           }}   )          
            } 
            return this.table20  }
 
 
   columnDefs4=[
-    {headerName:"Instances",field:'0',cellStyle: {
+    {headerName:"INSTANCES",field:'0',cellStyle: {
       backgroundColor: 'AliceBlue', 
        fontWeight: 'bold' 
    },},
-    //{headerName:this.getData(), field:this.getData()}
     {headerName:"Total power", children:this.getData20()},
-
     {headerName:"Leakage power", children:this.getData17()},
     {headerName:"Internal power", children:this.getData18()},
     {headerName:"Switching power", children:this.getData19()},
 
   ]
-//t=[]
 t: number[] = [];
-//t =[field]
 calculDiff(){
   this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
           const userObject = JSON.parse(this.object)
@@ -1119,49 +1057,10 @@ calculDiff(){
   //   //console.log(a);
   // }
   
+
+
  
-//    onGridReady1=(params)=>{this.uploadFilesComponent.getAllProjectsFromAPI().subscribe(data => { 
-//     JSON.stringify(data);
-//    params.api.applyTransaction({add:data})
-//    console.log(data)
-
-//  });
-//      }
-  
-
-  //onGridReady1=(params)=>{
-    //this.dataService.sharedParam.subscribe(param=>this.object=JSON.stringify(param))
-    //const userObject = JSON.parse(this.object);
-
-    //console.log(this.object)
-    //params.api.setRowData(this.object)    }
-
-  
-  // onGridReady1=(params)=>{
-  //   fetch('http://localhost:8080/importCSV/path?pathh=').then(resp=>resp.json())
-  //   .then(resp=>{console.log(resp)
-  //     params.api.applyTransaction({add:resp})})
-      
-
-  // }
-
-
-
-//   JSONArray jsonArray = new JSONArray();
-
-// for (loop) {
-//     JSONObject jsonObj= new JSONObject();
-//     jsonObj.put("srcOfPhoto", srcOfPhoto);
-//     jsonObj.put("username", "name"+count);
-//     jsonObj.put("userid", "userid"+count);
-
-//     jsonArray.put(jsonObj.valueToString());
-// }
-
-
-  
   gridOptions = {
-    //sideBar: 'columns',
     colmunsTypes:{
       editable:true,
       valueParser: function(para){
@@ -1174,9 +1073,13 @@ calculDiff(){
       debounceMs: 200
     },
     defaultColDef:{
+    resizable: true,
+    sortable: true,
+    wrapText: true,    
+    autoHeight: true,
+      
       enableRowGroup: true,
-      sortable:true,
-      resizable: true,
+     
       editable:true,
     },
     rowGroupPanelShow:'always',
@@ -1187,10 +1090,7 @@ calculDiff(){
     animateRows:true,
     columnDefs:this.columnDefs,
     groupHidenOpenParents:true,
-    columnDefs1:this.columnDefs1,
-
-    //rowData: this.rowData
-
+    columnDefs1:this.columnDefs1,   
 
 
     
@@ -1218,11 +1118,8 @@ calculDiff(){
     this.gridApi.setQuickFilter(this.searchValue)
   } 
   
-
-  
 }
-//let $scope = userObject;
-//let index = $scope.userObject.findIndex( a => a.userObject.contains("Design_Leakage_Power") );
+
 
 
 
