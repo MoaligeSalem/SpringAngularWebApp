@@ -18,9 +18,14 @@
   <header class="row bg-primary" style="padding:10px;width:98%;margin:1% ;height:80px;top: 10px;" >
     <div class="colDiv ">
       <nav  class="navbar " >
-        <mat-icon style="margin-right:20px;    margin-bottom: 7px;
-        font-size: 30px;color: aliceblue;">home</mat-icon>
-        <div class="col"><button class="btn btn-danger" style="border-radius:20px" (click)="onDeleteRow()" >
+        
+        <!-- <mat-icon style="margin-right:20px;    margin-bottom: 7px;
+        font-size: 30px;color: aliceblue;">home</mat-icon> -->
+        <div class="box" >
+          <img routerLink="/uploadFiles" routerLinkActive="active" src="https://www.ville-rail-transports.com/wp-content/uploads/2018/10/siemens-logo.png" style="width: 40%;height: 70%;margin-top: -15px" >
+      </div>
+    
+        <!-- <div class="col"><button class="btn btn-danger" style="border-radius:20px" (click)="onDeleteRow()" >
           Delete rows
         </button></div>
   
@@ -30,21 +35,18 @@
   
         <div class="col"><button class="btn btn-secondary" style="border-radius:20px" (click)="unpinTopRow()">
           Unpin the top
-        </button></div>
+        </button></div> -->
       </nav>
     </div> 
     <div class="col">
       <nav class="navbarIcon" style="margin-top: 8px ;">
         <mat-icon> comment</mat-icon>
-        <mat-icon>priority_high</mat-icon>
-        <mat-icon>sms_failed</mat-icon>
         <mat-icon>done_outline</mat-icon>
         <mat-icon>check_circle_outline</mat-icon>
         <mat-icon>clear</mat-icon>
         <mat-icon>grade</mat-icon>
         <mat-icon>list</mat-icon>
         <mat-icon>note_add</mat-icon>
-        <mat-icon>reorder</mat-icon>        
 
 
       </nav>
@@ -107,18 +109,49 @@
       style="width: 5000px; height: 500px;"
         class="ag-theme-balham" 
         (selectionChanged)="onSelectionChanged()"
-        [autoGroupColumnDef]="autoGroupColumnDef"
         [gridOptions]="gridOptions"
         rowSelection="multiple"
         [groupSelectsChildren]="true"
-        [aggFuncs]="aggFuncs"
         [columnDefs]="columnDefs"
         (gridReady)="onGridReady1($event)"
+       [enableCellChangeFlash]=true
         
       >
       
       </ag-grid-angular>
 
+    </div>
+
+    <div>
+      <div class="wrapper">
+        <div class="fusionItem"><fusioncharts
+          width=600
+          height="400"
+          type="bubble"
+          [dataSource]="dataSource1">
+          </fusioncharts></div>
+        <div class="fusionItem"><fusioncharts
+          width=600
+          height="400"
+          type="bubble"
+          [dataSource]="dataSource2">
+          </fusioncharts></div>
+        <div class="fusionItem"><fusioncharts
+          width=600
+          height="400"
+          type="bubble"
+          [dataSource]="dataSource3">
+          </fusioncharts>
+        </div>
+        <div class="fusionItem"><fusioncharts
+          width=600
+          height="400"
+          type="bubble"
+          [dataSource]="dataSource4">
+          </fusioncharts>
+        </div>
+      </div>
+      
     </div>
    
   </div>
@@ -133,7 +166,6 @@
   style="width: 5000px; height: 500px;"
   class="ag-theme-balham" 
   (selectionChanged)="onSelectionChanged()"
-  [autoGroupColumnDef]="autoGroupColumnDef"
   [gridOptions]="gridOptions"
   rowSelection="single"
   [groupSelectsChildren]="true"
@@ -144,6 +176,38 @@
 
 </ag-grid-angular>
 </div>  
+<div>
+  <div class="wrapper">
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource5">
+      </fusioncharts></div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource6">
+      </fusioncharts></div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource7">
+      </fusioncharts>
+    </div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource8">
+      </fusioncharts>
+    </div>
+
+</div>
+</div>
+
 </div>
 <div class="row">
   <div class="row">
@@ -155,7 +219,6 @@
 style="width: 5000px; height: 500px;"
 class="ag-theme-balham" 
 (selectionChanged)="onSelectionChanged()"
-[autoGroupColumnDef]="autoGroupColumnDef"
 [gridOptions]="gridOptions"
 rowSelection="multiple"
 [groupSelectsChildren]="true"
@@ -165,6 +228,37 @@ rowSelection="multiple"
 
 </ag-grid-angular>
 </div>  
+<div>
+  <div class="wrapper">
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource9">
+      </fusioncharts></div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource10">
+      </fusioncharts></div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource11">
+      </fusioncharts>
+    </div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource12">
+      </fusioncharts>
+    </div>
+</div>
+</div>
+
 </div>
 
 <div class="row">
@@ -177,7 +271,6 @@ rowSelection="multiple"
 style="width: 5000px; height: 500px;"
 class="ag-theme-balham" 
 (selectionChanged)="onSelectionChanged()"
-[autoGroupColumnDef]="autoGroupColumnDef"
 [gridOptions]="gridOptions"
 rowSelection="multiple"
 [groupSelectsChildren]="true"
@@ -187,6 +280,37 @@ rowSelection="multiple"
 
 </ag-grid-angular>
 </div>  
+<div>
+  <div class="wrapper">
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource13">
+      </fusioncharts></div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource14">
+      </fusioncharts></div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource15">
+      </fusioncharts>
+    </div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource16">
+      </fusioncharts>
+    </div>
+</div>
+</div>
+
 </div>
 
 <div class="row">
@@ -199,7 +323,6 @@ rowSelection="multiple"
 style="width: 5000px; height: 500px;"
 class="ag-theme-balham" 
 (selectionChanged)="onSelectionChanged()"
-[autoGroupColumnDef]="autoGroupColumnDef"
 [gridOptions]="gridOptions"
 rowSelection="multiple"
 [groupSelectsChildren]="true"
@@ -210,25 +333,54 @@ rowSelection="multiple"
 </ag-grid-angular>
 
 </div>  
+<div>
+  <div class="wrapper">
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource17">
+      </fusioncharts></div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource18">
+      </fusioncharts></div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource19">
+      </fusioncharts>
+    </div>
+    <div class="fusionItem"><fusioncharts
+      width=600
+      height="400"
+      type="bubble"
+      [dataSource]="dataSource20">
+      </fusioncharts>
+    </div>
+</div>
+</div>
 </div>
 
 <div class="row">
   <div class="row">
 <h5>Summary
 </h5>
-<div>
+<div id="sum">
 <ag-grid-angular
-  style="width: 1500px; height: 500px;"
+  style="max-width: 1200px; height: 600px;"
   class="ag-theme-balham" 
   (selectionChanged)="onSelectionChanged()"
-  [autoGroupColumnDef]="autoGroupColumnDef"
   [gridOptions]="gridOptions"
   rowSelection="multiple"
   [groupSelectsChildren]="true"
   [columnDefs]="colu"
-  [aggFuncs]="aggFuncs"
-  [rowData]="rowData"
-
+  [enableCellChangeFlash]=true
+  (gridReady)="onGridReady2($event)"
+  
 
 
 
@@ -236,252 +388,28 @@ rowSelection="multiple"
 >
 
 </ag-grid-angular>
+</div>
+
+
 </div>  
 </div>
+<div class="row">
+  <div class="space">
+  </div></div>
+<div class="row">
+  <div class="footer-dark">
+      <footer>
+          <div class="container1">
+
+              <p class="copyright">Siemens © 2022</p>
+          </div>
+      </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 
 </div>
 
-<br>
-<table>
-<thead>
-<tr><th colspan="1" class="header_style"> </th>
-<th colspan="3" class="header_style"> POWER NUMBERS </th>
-<th colspan="3" class="header_style">RTL_NEW_PA<br> vs <br>GATE_PA</th>
-<th colspan="3" class="header_style">RTL_OLD_PA<br> vs <br>GATE_PA</th>
-</tr><tr><th colspan="1" class="component" style="text-align:center;">COMPONENTS</th>
-<th colspan="1" class="ref_pwr" style="text-align:center;">GATE_PA</th>
-<th colspan="1" class="comp1_pwr" style="text-align:center;">RTL_NEW_PA</th>
-<th colspan="1" class="comp2_pwr" style="text-align:center;">RTL_OLD_PA</th>
-<th colspan="1" class="average1" style="text-align:center;">AVG</th>
-<th colspan="1" class="stddev1" style="text-align:center;">STD_DEV</th>
-<th colspan="1" class="rmse1" style="text-align:center;">RMSE</th>
-<th colspan="1" class="average2" style="text-align:center;">AVG</th>
-<th colspan="1" class="stddev2" style="text-align:center;">STD_DEV</th>
-<th colspan="1" class="rmse2" style="text-align:center;">RMSE</th>
-</tr></thead>
-<tbody>
-<tr><td class="component"> <a rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a  rel="noopener noreferrer" target="_self">Design Total</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"></td>
-<td class="average1"> </td>
-<td class="stddev1"></td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a  rel="noopener noreferrer" target="_self">Design Leakage</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"></td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <i style="font-size:14px" class="fa"></i> Design Internal</td>
-<td class="ref_pwr">{{gridApi}} </td>
-<td class="comp1_pwr"></td>
-<td class="comp2_pwr"> </td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a rel="noopener noreferrer" target="_self">Design Switching</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a  rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a rel="noopener noreferrer" target="_self">Combinational Total</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"></td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a  rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a rel="noopener noreferrer" target="_self">Combinational Leakage</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a  rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a rel="noopener noreferrer" target="_self">Combinational Internal</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"></td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a rel="noopener noreferrer" target="_self">Combinational Switching</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a rel="noopener noreferrer" target="_self">Register Total</a></td>
-<td class="ref_pwr"></td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"></td>
-<td class="rmse2"></td>
-</tr>
-<tr><td class="component"> <a  rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a rel="noopener noreferrer" target="_self">Register Leakage</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"></td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a rel="noopener noreferrer" target="_self">Register Internal</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"></td>
-<td class="stddev2"> </td>
-<td class="rmse2"></td>
-</tr>
-<tr><td class="component"> <a rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a rel="noopener noreferrer" target="_self">Register Switching</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"></td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a  rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a rel="noopener noreferrer" target="_self">Memory Total</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a  rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a rel="noopener noreferrer" target="_self">Memory Leakage</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"></td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a  rel="noopener noreferrer" target="_self">Memory Internal</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"></td>
-<td class="stddev1"> </td>
-<td class="rmse1">  </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a  rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a  rel="noopener noreferrer" target="_self">Memory Switching</a></td>
-<td class="ref_pwr"></td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"></td>
-<td class="average1"> </td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"></td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a  rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a  rel="noopener noreferrer" target="_self">Clock Network Total</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"></td>
-<td class="comp2_pwr"> </td>
-<td class="average1"></td>
-<td class="stddev1"> </td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a  rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a  rel="noopener noreferrer" target="_self">Clock Network Leakage</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"></td>
-<td class="stddev1"></td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"></td>
-</tr>
-<tr><td class="component"> <a  rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a  rel="noopener noreferrer" target="_self">Clock Network Internal</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"> </td>
-<td class="average1"> </td>
-<td class="stddev1"></td>
-<td class="rmse1"> </td>
-<td class="average2"></td>
-<td class="stddev2"></td>
-<td class="rmse2"> </td>
-</tr>
-<tr><td class="component"> <a  rel="noopener noreferrer" target="_self"><i style="font-size:14px" class="fa"></i></a> <a  rel="noopener noreferrer" target="_self">Clock Network Switching</a></td>
-<td class="ref_pwr"> </td>
-<td class="comp1_pwr"> </td>
-<td class="comp2_pwr"></td>
-<td class="average1"> </td>
-<td class="stddev1"></td>
-<td class="rmse1"> </td>
-<td class="average2"> </td>
-<td class="stddev2"> </td>
-<td class="rmse2"> </td>
-</tr>
-</tbody>
-</table>
 
 
   

@@ -15,14 +15,10 @@ export class UploadFilesComponent implements OnInit{
   
   home=new home()
   dataarray:home[]=[]
+  names:string[]=[]
 
 
-//a = this.dataarray.length; 
-  
-// passDataToService() {
-//   this.dataService.allPassedData.next(this.obj); 
-                                            
-//  }
+
   ngOnInit(){
     this.dataarray.push(this.home)
     
@@ -43,28 +39,11 @@ export class UploadFilesComponent implements OnInit{
   
     async funct1(csvPath: string,csvPathName: string,num:number){
       var out ;
-      //this.resp= await fetch('http://localhost:8080/importCSV/path?pathh='+csvPath+'&csvname='+csvPathName+"&numOfCsv="+num)
       
       let resp= await fetch('http://localhost:8080/importCSV/path?pathh='+csvPath+'&csvname='+csvPathName+"&numOfCsv="+num)
-      //.then(response)=>{response.json().then((data)=>
        
-      console.log(resp)
       let data = await resp.text();
       return(data)
-     // )}
-      // .then((response) =>{
-      //   response.json().then(data => out=data)
-      //   .then(() => console.log(out))
-
-
-      //    // console.log(this.ourArray);
-      //     //console.log("hgsd" +(this.ourArray));
-
-      //     return out
-
-
-      //     });
-      //     console.log(out);
     }
 
     
@@ -77,21 +56,26 @@ export class UploadFilesComponent implements OnInit{
     var userObject;
     await fetch('http://localhost:8080/importCSVLength/length?n_input='+n_input)
     await this.funct1(pathh,csvname,num)
+    this.names.push(csvname)
+
     for(let i=0;i<this.dataarray.length;i++){
       num=i+2;
       
       let test1 =  await this.funct1(this.dataarray[i].path,this.dataarray[i].pathName,num)
-      console.log(test1)
       if(i==this.dataarray.length-1){
        userObject = JSON.parse(test1);
-      console.log(userObject)}
+    }
 let b = this.dataarray.length+1
+
+this.names.push(
+ this.dataarray[i].pathName)
       let test = await this.dataService.changeParam(userObject)
       let a =  this.dataService.changeParam2(b)
-    console.log(a)
+      let ref =  this.dataService.changeParam4(csvname)
+
+      let name =  this.dataService.changeParam3(this.names)
 
     }
-    //console.log(obj)
     this.router.navigate([`${pageName}`])
   }
   constructor(private http:HttpClient,private router:Router,private dataService: DataService) {    
@@ -100,15 +84,7 @@ let b = this.dataarray.length+1
   
   }
 
-  // get data():string{
-  //   return this.dataService.sharedData;
-  // }
-  // set data(ourArray:string){
-  //   this.dataService.sharedData=ourArray;
-  // }
-//   public getAllProjectsFromAPI() : Observable<any> {
-//     return this.http.get( this.ourArray, { responseType: 'json' } ); 
-//  }
+ 
 
   add_fields(){
   this.home=new home()

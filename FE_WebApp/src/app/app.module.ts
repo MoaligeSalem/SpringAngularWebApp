@@ -33,7 +33,18 @@ import { ComparaisonComponent } from './comparaison/comparaison.component';
 import { CompaComponent } from './compa/compa.component';
 import { DataService } from './data.service';
 
+import {FusionChartsModule} from 'angular-fusioncharts';
 
+// Import FusionCharts library and chart modules
+
+import * as FusionCharts from "fusioncharts";;
+
+import * as Charts from "fusioncharts/fusioncharts.charts";
+
+import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+
+
+FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
 
 
 @NgModule({
@@ -68,7 +79,9 @@ import { DataService } from './data.service';
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FusionChartsModule
+    
   ],
   providers: [routingComponents,DataService],
 
