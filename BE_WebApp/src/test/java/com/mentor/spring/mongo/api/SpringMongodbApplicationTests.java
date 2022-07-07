@@ -1,4 +1,4 @@
-package com.javatechie.spring.mongo.api;
+package com.mentor.spring.mongo.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.javatechie.spring.mongo.api.model;
+package com.mentor.spring.mongo.api.model;
 
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
@@ -16,10 +16,9 @@ import java.util.List;
 @Setter
 @ToString
 
-@Document(collection="Book")
-public class Book {
-	//@Id
-	//private String id;
+@Document(collection="PowerPro File")
+public class PowerProFile {
+
 	@Transient
 	public static final String SEQUENCE_NAME="csv_sequence";
 
@@ -28,7 +27,6 @@ public class Book {
 	private String csvname;
 	private String path;
 	private List<Csv> fields;
-	private List<Compar> field;
 
 
 

@@ -1,9 +1,8 @@
-package com.javatechie.spring.mongo.api.model;
+package com.mentor.spring.mongo.api.model;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter

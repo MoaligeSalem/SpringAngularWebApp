@@ -1,4 +1,4 @@
-package com.javatechie.spring.mongo.api.model;
+package com.mentor.spring.mongo.api.model;
 
 
 

@@ -1,4 +1,4 @@
-package com.javatechie.spring.mongo.api.resource;
+package com.mentor.spring.mongo.api.resource;
 
 import org.springframework.web.multipart.MultipartFile;
 
