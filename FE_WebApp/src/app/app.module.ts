@@ -42,6 +42,7 @@ import * as FusionCharts from "fusioncharts";;
 import * as Charts from "fusioncharts/fusioncharts.charts";
 
 import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+import { AdminComponent } from './admin/admin.component';
 
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -54,6 +55,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     AuthenticationComponent,
     ComparaisonComponent,
     CompaComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

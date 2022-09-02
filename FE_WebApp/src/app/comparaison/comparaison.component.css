@@ -218,3 +218,21 @@ table {
                             min-width: 600px;
                             height: 400px;
                         }
+
+                       
+                            .submit-btn {
+                              background-color: #128ff2;
+                              color: #fff;
+                              outline: none;
+                              height: 40px;
+                              border: 1px solid transparent;
+                              border-radius: 20px;
+                              transition: all 0.2s ease-in-out;
+                              position: relative;
+                              width: 250px;
+                              
+                            }
+                            
+                            .submit-btn:hover {
+                            background-color: #0c79d0;
+                            }
